@@ -19,8 +19,9 @@ export function Header() {
 
       {/* Header positioned absolutely over the dark hero sections */}
       <header className="absolute top-[22px] left-[20px] sm:left-[32px] lg:left-[56px] right-[20px] sm:right-[32px] lg:right-[56px] flex justify-between items-center z-50">
-        <Link to="/" className="flex items-center group">
+        <Link to="/" className="flex flex-col items-center group mt-1">
           <img src="/logo/NC-LOGO.png" alt="Nabhay Chits" className="h-20 w-auto" />
+          <span className="text-white/80 text-[10px] font-medium tracking-wider mt-0.5 uppercase">Since 2015</span>
         </Link>
 
 
