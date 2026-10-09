@@ -1,284 +1,137 @@
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
-import {
-  Landmark,
-  HandCoins,
-  Wallet,
-  GraduationCap,
-  Home,
-  Car,
-  ArrowRight,
-  Check,
-  Calculator,
-} from "lucide-react";
+import { ArrowRight, Layers, CalendarDays, LayoutGrid, HeadphonesIcon, Check } from "lucide-react";
 
 const Services = () => {
   const { t } = useLanguage();
 
-  const mainServices = [
+  const services = [
     {
-      id: "loans",
-      icon: Landmark,
-      title: t("services.ruralLoans"),
-      subtitle: "Finance your dreams",
-      description: t("services.ruralLoansDesc"),
-      features: [
-        "Interest from 9% p.a.",
-        "Loan amount up to ₹10 lakhs",
-        t("services.ruralLoansF2"),
-        "Minimal documentation",
-        "No processing fee",
-        "Prepayment without penalty",
-      ],
-      highlight: "9%",
-      highlightLabel: "Starting Rate",
-      color: "bg-blue-500",
-      link: "/services/rural-loans",
+      id: "flexible-chits",
+      icon: Layers,
+      title: t("services.flexibleChits"),
+      description: t("services.flexibleChitsDesc"),
+      features: [t("services.flexibleChitsF1"), t("services.flexibleChitsF2"), t("services.flexibleChitsF3")],
     },
     {
-      id: "microfinance",
-      icon: HandCoins,
-      title: t("services.microfinance"),
-      subtitle: "Empower your business",
-      description: t("services.microfinanceDesc"),
-      features: [
-        "Loans starting from ₹5,000",
-        t("services.microfinanceF1"),
-        t("services.microfinanceF2"),
-        t("services.microfinanceF3"),
-        "Weekly/monthly repayment",
-        "No collateral required",
-      ],
-      highlight: "₹5K",
-      highlightLabel: "Starting From",
-      color: "bg-amber-500",
-      link: "/services/microfinance",
+      id: "monthly-savings",
+      icon: CalendarDays,
+      title: t("services.monthlySavings"),
+      description: t("services.monthlySavingsDesc"),
+      features: [t("services.monthlySavingsF1"), t("services.monthlySavingsF2"), t("services.monthlySavingsF3")],
     },
     {
-      id: "construction",
-      icon: Home,
-      title: t("services.construction"),
-      subtitle: "Build your dream home",
-      description: t("services.constructionDesc"),
-      features: [
-        t("services.constructionF1"),
-        t("services.constructionF2"),
-        "Long repayment tenure",
-        t("services.constructionF3"),
-        "Stage-wise disbursement",
-        "No hidden charges",
-      ],
-      highlight: "₹15L",
-      highlightLabel: "Up to",
-      color: "bg-emerald-500",
-      link: "/services/construction-support",
+      id: "multiple-options",
+      icon: LayoutGrid,
+      title: t("services.multipleOptions"),
+      description: t("services.multipleOptionsDesc"),
+      features: [t("services.multipleOptionsF1"), t("services.multipleOptionsF2"), t("services.multipleOptionsF3")],
     },
     {
-      id: "pigmy",
-      icon: Wallet,
-      title: t("services.pigmy"),
-      subtitle: "Save daily, grow steadily",
-      description: t("services.pigmyDesc"),
-      features: [
-        t("services.pigmyF1"),
-        "Start with as little as ₹10/day",
-        t("services.pigmyF2"),
-        "Monthly statement provided",
-        "No minimum balance",
-        t("services.pigmyF3"),
-      ],
-      highlight: "₹10",
-      highlightLabel: "Per Day",
-      color: "bg-purple-500",
-      link: "/services/pigmy-collection",
+      id: "financial-planning",
+      icon: HeadphonesIcon,
+      title: t("services.financialPlanning"),
+      description: t("services.financialPlanningDesc"),
+      features: [t("services.financialPlanningF1"), t("services.financialPlanningF2"), t("services.financialPlanningF3")],
     },
   ];
 
-  const additionalServices = [
-    {
-      icon: GraduationCap,
-      title: t("servicesPage.educationLoan"),
-      description: t("servicesPage.educationLoanDesc"),
-    },
-    {
-      icon: Car,
-      title: t("servicesPage.vehicleLoan"),
-      description: t("servicesPage.vehicleLoanDesc"),
-    },
+  const schemes = [
+    { amount: "₹1 Lakh", monthly: "₹5,000" },
+    { amount: "₹2 Lakh", monthly: "₹10,000" },
+    { amount: "₹3 Lakh", monthly: "₹15,000" },
+    { amount: "₹5 Lakh", monthly: "₹25,000" },
   ];
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-[#f5f0e8]">
       <Header />
       <main className="flex-1">
-        {/* Hero Section */}
-        <section className="bg-[#1f3759] py-20 relative overflow-hidden">
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#960f1e]/10 rounded-full blur-3xl" />
-          <div className="container relative z-10">
-            <div className="max-w-3xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#960f1e]/10 text-[#960f1e] text-sm font-semibold font-['Montserrat'] mb-6">
-                {t("servicesPage.badge")}
-              </div>
-              <h1 className="font-['Montserrat'] text-4xl sm:text-5xl font-bold text-[#dfdcd3] mb-6">
-                {t("servicesPage.title1")} <span className="text-[#960f1e]">{t("servicesPage.titleHighlight")}</span>
+        {/* Page Hero */}
+        <section className="bg-[#123524]">
+          <div className="border-t border-white/10">
+            <div className="max-w-[1400px] mx-auto px-[56px] md:px-[32px] sm:px-[20px] pt-32 pb-24">
+              <p className="text-[11px] tracking-[0.2em] uppercase text-[#c59822] mb-8">{t("servicesPage.badge")}</p>
+              <h1 className="font-cormorant text-[clamp(40px,5vw,80px)] font-normal leading-[1.05] text-[#FAF5EE] max-w-2xl">
+                {t("servicesPage.title1")}{" "}
+                <span className="italic">{t("servicesPage.titleHighlight")}</span>
               </h1>
-              <p className="font-['Anek_Kannada'] font-semibold text-xl text-[#dfdcd3]/80">
+              <p className="text-[15px] text-[#FAF5EE]/50 mt-8 max-w-lg leading-relaxed">
                 {t("servicesPage.description")}
               </p>
             </div>
           </div>
         </section>
 
-        {/* Main Services */}
-        <section className="py-20 bg-[#dfdcd3]">
-          <div className="container">
-            <div className="space-y-16">
-              {mainServices.map((service, index) => (
-                <div
-                  key={service.id}
-                  id={service.id}
-                  className={`grid lg:grid-cols-2 gap-8 lg:gap-12 items-center ${index % 2 === 1 ? "lg:flex-row-reverse" : ""
-                    }`}
-                >
-                  {/* Content */}
-                  <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                    <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl ${service.color}/10 mb-6`}>
-                      <service.icon className={`h-8 w-8 ${service.color.replace('bg-', 'text-').replace('-500', '-600')}`} />
-                    </div>
-                    <h2 className="font-['Montserrat'] text-3xl font-bold text-[#1f3759] mb-2">
-                      {service.title}
-                    </h2>
-                    <p className="text-[#960f1e] font-semibold font-['Anek_Kannada'] mb-4">{service.subtitle}</p>
-                    <p className="font-['Anek_Kannada'] font-semibold text-[#1f3759]/80 mb-6 leading-relaxed">
-                      {service.description}
-                    </p>
-
-                    <div className="grid sm:grid-cols-2 gap-3 mb-8">
-                      {service.features.map((feature) => (
-                        <div key={feature} className="flex items-center gap-2">
-                          <div className="w-5 h-5 rounded-full bg-[#960f1e]/10 flex items-center justify-center flex-shrink-0">
-                            <Check className="h-3 w-3 text-[#960f1e]" />
-                          </div>
-                          <span className="text-sm text-muted-foreground">{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    <Button variant="default" asChild>
-                      <Link to={service.link}>
-                        {t("services.learnMore")}
-                        <ArrowRight className="h-4 w-4 ml-2" />
-                      </Link>
-                    </Button>
+        {/* Services list */}
+        {services.map((service, i) => (
+          <div key={service.id} id={service.id} className={i % 2 === 0 ? "bg-white" : "bg-[#f5f0e8]"}>
+            <div className="border-t border-[#1a1a1a]/10">
+              <div className="max-w-[1400px] mx-auto px-[56px] md:px-[32px] sm:px-[20px] grid lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-[#1a1a1a]/10">
+                {/* Info */}
+                <div className="py-20 pr-0 lg:pr-20">
+                  <div className="w-9 h-9 flex items-center justify-center border border-[#1a1a1a]/10 mb-8">
+                    <service.icon className="w-4 h-4 text-[#123524]" />
                   </div>
-
-                  {/* Visual Card */}
-                  <div className={index % 2 === 1 ? "lg:order-1" : ""}>
-                    <div className="bg-card rounded-2xl border border-border p-8 relative overflow-hidden">
-                      <div className={`absolute top-0 right-0 w-40 h-40 ${service.color}/5 rounded-full blur-2xl`} />
-
-                      {/* Highlight Badge */}
-                      <div className="relative z-10 text-center mb-8">
-                        <div className={`inline-block px-6 py-2 rounded-full ${service.color}/10 mb-4`}>
-                          <span className="font-['Montserrat'] text-4xl font-bold text-[#1f3759]">
-                            {service.highlight}
-                          </span>
-                        </div>
-                        <p className="font-['Anek_Kannada'] font-semibold text-sm text-[#1f3759]/80">{service.highlightLabel}</p>
-                      </div>
-
-                      {/* Calculator Preview */}
-                      <div className="bg-muted/50 rounded-xl p-6">
-                        <div className="flex items-center gap-2 text-muted-foreground mb-4">
-                          <Calculator className="h-4 w-4" />
-                          <span className="text-sm font-medium">{t("servicesPage.quickCalculator")}</span>
-                        </div>
-                        <div className="space-y-3">
-                          <div className="flex justify-between text-sm">
-                            <span className="text-muted-foreground">{t("servicesPage.sampleAmount")}</span>
-                            <span className="font-semibold text-foreground">₹1,00,000</span>
-                          </div>
-                          <div className="flex justify-between text-sm">
-                            <span className="text-muted-foreground">{t("servicesPage.duration")}</span>
-                            <span className="font-semibold text-foreground">1 Year</span>
-                          </div>
-                          <div className="h-px bg-border my-2" />
-                          <div className="flex justify-between">
-                            <span className="text-muted-foreground">{t("servicesPage.maturityAmount")}</span>
-                            <span className="font-bold text-[#960f1e] text-lg">₹1,08,500</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Additional Services
-        
-<section className="py-20 bg-[#dfdcd3]/30">
-          <div className="container">
-            <div className="text-center max-w-2xl mx-auto mb-12">
-              <h2 className="font-['Montserrat'] text-3xl font-bold text-[#1f3759] mb-4">
-                {t("servicesPage.moreServices")} <span className="text-[#960f1e]">{t("servicesPage.moreServicesHighlight")}</span>
-              </h2>
-              <p className="font-['Anek_Kannada'] font-semibold text-[#1f3759]/80">
-                {t("servicesPage.moreServicesDesc")}
-              </p>
-            </div>
-
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {additionalServices.map((service) => (
-                <div
-                  key={service.title}
-                  className="bg-card rounded-xl p-6 border border-border hover:shadow-lg hover:border-[#960f1e]/30 transition-all"
-                >
-                  <div className="w-12 h-12 rounded-xl bg-[#1f3759] flex items-center justify-center mb-4">
-                    <service.icon className="h-6 w-6 text-[#960f1e]" />
-                  </div>
-                  <h3 className="font-['Montserrat'] text-lg font-semibold text-[#1f3759] mb-2">
+                  <h2 className="font-cormorant text-[clamp(28px,2.5vw,44px)] font-normal leading-[1.1] text-[#1a1a1a] mb-6">
                     {service.title}
-                  </h3>
-                  <p className="font-['Anek_Kannada'] font-semibold text-sm text-[#1f3759]/80">{service.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        */}
-
-
-        {/* CTA */}
-        <section className="py-20 bg-[#dfdcd3]">
-          <div className="container">
-            <div className="max-w-2xl mx-auto text-center">
-              <h2 className="font-['Montserrat'] text-3xl font-bold text-[#1f3759] mb-4">
-                {t("servicesPage.readyTitle")}
-              </h2>
-              <p className="font-['Anek_Kannada'] font-semibold text-[#1f3759]/80 mb-8">
-                {t("servicesPage.readyDesc")}
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button variant="hero" size="lg" asChild>
-                  <Link to="/contact">
-                    {t("cta.contactUs")}
-                    <ArrowRight className="h-4 w-4 ml-2" />
+                  </h2>
+                  <p className="text-[14px] text-[#1a1a1a]/55 leading-relaxed mb-8 max-w-sm">{service.description}</p>
+                  <ul className="space-y-3">
+                    {service.features.map((f) => (
+                      <li key={f} className="flex items-start gap-3 text-[13px] text-[#1a1a1a]/55">
+                        <Check className="w-3.5 h-3.5 text-[#123524] mt-0.5 flex-shrink-0" />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link to="/contact"
+                    className="inline-flex items-center gap-2 mt-10 text-[13px] text-[#123524] font-medium hover:gap-3 transition-all">
+                    {t("servicesPage.applyNow")} <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
-                </Button>
-                {/* <Button variant="heroOutline" size="lg" asChild>
-                  <Link to="/login">{t("nav.customerLogin")}</Link>
-                </Button> */}
+                </div>
+
+                {/* Scheme table */}
+                <div className="py-20 pl-0 lg:pl-20 flex flex-col justify-center">
+                  <p className="text-[11px] tracking-[0.2em] uppercase text-[#1a1a1a]/35 mb-8">{t("servicesPage.quickCalculator")}</p>
+                  <table className="w-full max-w-sm">
+                    <thead>
+                      <tr className="border-b border-[#1a1a1a]/10">
+                        <th className="text-left pb-4 text-[12px] font-semibold text-[#1a1a1a]/50 uppercase tracking-wider">{t("servicesPage.sampleAmount")}</th>
+                        <th className="text-right pb-4 text-[12px] font-semibold text-[#1a1a1a]/50 uppercase tracking-wider">{t("servicesPage.duration")}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {schemes.map((s) => (
+                        <tr key={s.amount} className="border-b border-[#1a1a1a]/[0.06]">
+                          <td className="py-4 text-[15px] text-[#1a1a1a]">{s.amount}</td>
+                          <td className="py-4 text-right text-[15px] font-semibold text-[#123524]">{s.monthly}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                  <p className="text-[11px] text-[#1a1a1a]/35 mt-6 max-w-xs leading-relaxed">{t("schemes.note")}</p>
+                </div>
               </div>
             </div>
           </div>
-        </section>
+        ))}
+
+        {/* CTA strip */}
+        <div className="bg-[#123524] border-t border-white/10">
+          <div className="max-w-[1400px] mx-auto px-[56px] md:px-[32px] sm:px-[20px] py-20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-8">
+            <div>
+              <h2 className="font-cormorant text-[clamp(24px,2vw,38px)] font-normal text-[#FAF5EE]">{t("servicesPage.readyTitle")}</h2>
+              <p className="text-[13px] text-[#FAF5EE]/45 mt-2 max-w-sm">{t("servicesPage.readyDesc")}</p>
+            </div>
+            <Link to="/contact"
+              className="flex items-center gap-2 h-[52px] px-8 bg-[#c59822] text-[#1a1a1a] text-[14px] font-medium hover:brightness-110 transition-all whitespace-nowrap">
+              {t("cta.contactUs")} <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
       </main>
       <Footer />
     </div>
@@ -286,3 +139,4 @@ const Services = () => {
 };
 
 export default Services;
+

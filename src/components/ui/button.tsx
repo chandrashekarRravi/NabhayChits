@@ -16,10 +16,10 @@ const buttonVariants = cva(
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         // Banking-specific variants
-        hero: "bg-[#960f1e] text-[#dfdcd3] font-semibold shadow-lg hover:shadow-[#960f1e]/40 hover:scale-[1.02] active:scale-[0.98]",
-        heroOutline: "border-2 border-[#960f1e]/80 text-[#960f1e] hover:bg-[#960f1e]/10 font-semibold",
-        navyGold: "bg-navy text-[#960f1e] font-semibold hover:bg-navy-light shadow-md",
-        goldOutline: "border-2 border-[#960f1e] text-[#960f1e] hover:bg-[#960f1e] hover:text-[#dfdcd3] font-medium",
+        hero: "bg-[#c59822] text-[#fbfaf5] font-semibold shadow-lg hover:shadow-[#c59822]/40 hover:scale-[1.02] active:scale-[0.98]",
+        heroOutline: "border-2 border-[#c59822]/80 text-[#c59822] hover:bg-[#c59822]/10 font-semibold",
+        navyGold: "bg-navy text-[#c59822] font-semibold hover:bg-navy-light shadow-md",
+        goldOutline: "border-2 border-[#c59822] text-[#c59822] hover:bg-[#c59822] hover:text-[#fbfaf5] font-medium",
         navyOutline: "border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground",
       },
       size: {

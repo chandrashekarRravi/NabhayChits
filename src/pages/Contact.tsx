@@ -6,311 +6,149 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
-import {
-  MapPin,
-  Phone,
-  Mail,
-  Clock,
-  Send,
-  Building2,
-} from "lucide-react";
-
-const branches = [
-  {
-    name: "Head Office",
-    address: "123 Main Street, Rural District, Karnataka - 560001",
-    phone: "+91 1234 567 890",
-    email: "headoffice@sbgatrust.org",
-    hours: "Mon - Sat: 9:00 AM - 5:00 PM",
-  },
-  {
-    name: "Hassan Branch",
-    address: "45 Market Road, Hassan District, Karnataka - 573201",
-    phone: "+91 1234 567 891",
-    email: "hassan@sbgatrust.org",
-    hours: "Mon - Sat: 9:30 AM - 4:30 PM",
-  },
-  {
-    name: "Mandya Branch",
-    address: "78 Temple Street, Mandya District, Karnataka - 571401",
-    phone: "+91 1234 567 892",
-    email: "mandya@sbgatrust.org",
-    hours: "Mon - Sat: 9:30 AM - 4:30 PM",
-  },
-];
+import { MapPin, Phone, Clock, ArrowRight } from "lucide-react";
 
 const Contact = () => {
   const { toast } = useToast();
   const { t } = useLanguage();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    subject: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState({ name: "", phone: "", subject: "", message: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-
-    toast({
-      title: t("contact.messageSent"),
-      description: t("contact.messageSuccess"),
-    });
-
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      subject: "",
-      message: "",
-    });
+    await new Promise((r) => setTimeout(r, 1000));
+    toast({ title: t("contact.messageSent"), description: t("contact.messageSuccess") });
+    setFormData({ name: "", phone: "", subject: "", message: "" });
     setIsSubmitting(false);
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-[#f5f0e8]">
       <Header />
       <main className="flex-1">
-        {/* Hero Section */}
-        <section className="bg-[#1f3759] py-20 relative overflow-hidden">
-          <div className="absolute top-0 left-1/4 w-72 h-72 bg-[#960f1e]/10 rounded-full blur-3xl" />
-          <div className="container relative z-10">
-            <div className="max-w-3xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#960f1e]/10 text-[#960f1e] text-sm font-semibold font-['Montserrat'] mb-6">
-                {t("contact.badge")}
-              </div>
-              <h1 className="font-['Montserrat'] text-4xl sm:text-5xl font-bold text-[#dfdcd3] mb-6">
-                {t("contact.title1")} <span className="text-[#960f1e]">{t("contact.titleHighlight")}</span>
+        {/* Page hero */}
+        <section className="bg-[#123524]">
+          <div className="border-t border-white/10">
+            <div className="max-w-[1400px] mx-auto px-[56px] md:px-[32px] sm:px-[20px] pt-32 pb-24">
+              <p className="text-[11px] tracking-[0.2em] uppercase text-[#c59822] mb-8">{t("contact.badge")}</p>
+              <h1 className="font-cormorant text-[clamp(40px,5vw,80px)] font-normal leading-[1.05] text-[#FAF5EE] max-w-xl">
+                {t("contact.title1")}{" "}
+                <span className="italic">{t("contact.titleHighlight")}</span>
               </h1>
-              <p className="font-['Anek_Kannada'] font-semibold text-xl text-[#dfdcd3]/80">
-                {t("contact.description")}
-              </p>
             </div>
           </div>
         </section>
 
-        {/* Contact Form & Info */}
-        <section id="contact" className="py-20 bg-background">
-          <div className="container">
-            <div className="grid lg:grid-cols-2 gap-12">
-              {/* Contact Form */}
-              <div className="bg-card rounded-2xl border border-border p-8">
-                <h2 className="font-display text-2xl font-bold text-foreground mb-6">
-                  {t("contact.sendMessage")}
-                </h2>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="text-sm font-medium text-foreground mb-2 block">
-                        {t("contact.fullName")}
-                      </label>
-                      <Input
-                        required
-                        value={formData.name}
-                        onChange={(e) =>
-                          setFormData({ ...formData, name: e.target.value })
-                        }
-                        placeholder=""
-                      />
-                    </div>
-                    <div>
-                      <label className="text-sm font-medium text-foreground mb-2 block">
-                        {t("contact.email")}
-                      </label>
-                      <Input
-                        type="email"
-                        required
-                        value={formData.email}
-                        onChange={(e) =>
-                          setFormData({ ...formData, email: e.target.value })
-                        }
-                        placeholder="you@example.com"
-                      />
-                    </div>
-                  </div>
+        {/* Main split */}
+        <div className="border-t border-[#1a1a1a]/10">
+          <div className="max-w-[1400px] mx-auto px-[56px] md:px-[32px] sm:px-[20px] grid lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-[#1a1a1a]/10">
 
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="text-sm font-medium text-foreground mb-2 block">
-                        {t("contact.phone")}
-                      </label>
-                      <Input
-                        type="tel"
-                        value={formData.phone}
-                        onChange={(e) =>
-                          setFormData({ ...formData, phone: e.target.value })
-                        }
-                        placeholder="+91 1234 567 890"
-                      />
-                    </div>
-                    <div>
-                      <label className="text-sm font-medium text-foreground mb-2 block">
-                        {t("contact.subject")}
-                      </label>
-                      <Input
-                        required
-                        value={formData.subject}
-                        onChange={(e) =>
-                          setFormData({ ...formData, subject: e.target.value })
-                        }
-                        placeholder=""
-                      />
-                    </div>
-                  </div>
+            {/* Contact info */}
+            <div className="py-20 pr-0 lg:pr-20 space-y-12">
+              <div>
+                <p className="text-[11px] tracking-[0.2em] uppercase text-[#1a1a1a]/35 mb-6">{t("contact.getInTouch")}</p>
+                <p className="text-[14px] text-[#1a1a1a]/55 leading-relaxed max-w-sm">{t("contact.description")}</p>
+              </div>
 
+              <div className="space-y-8">
+                <div className="flex items-start gap-5">
+                  <div className="w-8 h-8 flex items-center justify-center border border-[#1a1a1a]/10 flex-shrink-0 mt-0.5">
+                    <MapPin className="w-3.5 h-3.5 text-[#123524]" />
+                  </div>
                   <div>
-                    <label className="text-sm font-medium text-foreground mb-2 block">
-                      {t("contact.message")}
-                    </label>
-                    <Textarea
+                    <p className="text-[12px] font-semibold text-[#1a1a1a] mb-1 tracking-wide uppercase">{t("contact.address")}</p>
+                    <p className="text-[13px] text-[#1a1a1a]/55 leading-relaxed">
+                      Opp Guru Wines Road, Behind Vijaya Motors,<br />
+                      Maruthi Nagar, Tumkur - 572102, Karnataka
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-5">
+                  <div className="w-8 h-8 flex items-center justify-center border border-[#1a1a1a]/10 flex-shrink-0 mt-0.5">
+                    <Phone className="w-3.5 h-3.5 text-[#123524]" />
+                  </div>
+                  <div>
+                    <p className="text-[12px] font-semibold text-[#1a1a1a] mb-1 tracking-wide uppercase">{t("contact.phone.label")}</p>
+                    <a href="tel:+919742130555" className="block text-[13px] text-[#1a1a1a]/55 hover:text-[#123524] transition-colors">9742130555</a>
+                    <a href="tel:+919538595555" className="block text-[13px] text-[#1a1a1a]/55 hover:text-[#123524] transition-colors">9538595555</a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-5">
+                  <div className="w-8 h-8 flex items-center justify-center border border-[#1a1a1a]/10 flex-shrink-0 mt-0.5">
+                    <Clock className="w-3.5 h-3.5 text-[#123524]" />
+                  </div>
+                  <div>
+                    <p className="text-[12px] font-semibold text-[#1a1a1a] mb-1 tracking-wide uppercase">{t("contact.workingHours")}</p>
+                    <p className="text-[13px] text-[#1a1a1a]/55">Monday – Saturday: 9:00 AM – 6:00 PM</p>
+                    <p className="text-[13px] text-[#1a1a1a]/35">Sunday: Closed</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Form */}
+            <div className="py-20 pl-0 lg:pl-20">
+              <p className="text-[11px] tracking-[0.2em] uppercase text-[#1a1a1a]/35 mb-10">{t("contact.sendMessage")}</p>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid sm:grid-cols-2 gap-5">
+                  <div>
+                    <label className="block text-[12px] font-medium text-[#1a1a1a]/60 mb-2 uppercase tracking-wider">{t("contact.fullName")}</label>
+                    <input
                       required
-                      rows={5}
-                      value={formData.message}
-                      onChange={(e) =>
-                        setFormData({ ...formData, message: e.target.value })
-                      }
-                      placeholder=""
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      className="w-full border border-[#1a1a1a]/15 bg-transparent px-4 py-3 text-[14px] text-[#1a1a1a] placeholder:text-[#1a1a1a]/30 outline-none focus:border-[#123524] transition-colors"
                     />
                   </div>
+                  <div>
+                    <label className="block text-[12px] font-medium text-[#1a1a1a]/60 mb-2 uppercase tracking-wider">{t("contact.phone")}</label>
+                    <input
+                      type="tel"
+                      required
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      placeholder="9XXXXXXXXX"
+                      className="w-full border border-[#1a1a1a]/15 bg-transparent px-4 py-3 text-[14px] text-[#1a1a1a] placeholder:text-[#1a1a1a]/30 outline-none focus:border-[#123524] transition-colors"
+                    />
+                  </div>
+                </div>
 
-                  <Button
-                    type="submit"
-                    variant="default"
-                    size="lg"
-                    className="w-full"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? (
-                      t("contact.sending")
-                    ) : (
-                      <>
-                        {t("contact.send")}
-                        <Send className="h-4 w-4 ml-2" />
-                      </>
-                    )}
-                  </Button>
-                </form>
-              </div>
-
-              {/* Contact Info */}
-              <div className="space-y-8">
                 <div>
-                  <h2 className="font-display text-2xl font-bold text-foreground mb-6">
-                    {t("contact.getInTouch")}
-                  </h2>
-                  <div className="space-y-4">
-                    <div className="flex items-start gap-4 p-4 rounded-xl bg-muted/50">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-navy flex items-center justify-center flex-shrink-0">
-                        <MapPin className="h-5 w-5 text-[#dfdcd3]" />
-                      </div>
-                      <div>
-                        <div className="font-semibold text-foreground">{t("footer.headOffice")}</div>
-                        <div className="text-sm text-muted-foreground">
-                          123 Main Street, Rural District,<br />
-                          Karnataka, India - 560001
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-4 p-4 rounded-xl bg-muted/50">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-navy flex items-center justify-center flex-shrink-0">
-                        <Phone className="h-5 w-5 text-[#dfdcd3]" />
-                      </div>
-                      <div>
-                        <div className="font-semibold text-foreground">{t("contact.phone")}</div>
-                        <div className="text-sm text-muted-foreground">
-                          +91 1234 567 890<br />
-                          +91 1234 567 891
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-4 p-4 rounded-xl bg-muted/50">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-navy flex items-center justify-center flex-shrink-0">
-                        <Mail className="h-5 w-5 text-[#dfdcd3]" />
-                      </div>
-                      <div>
-                        <div className="font-semibold text-foreground">{t("login.email")}</div>
-                        <div className="text-sm text-muted-foreground">
-                          info@sbgatrust.org<br />
-                          support@sbgatrust.org
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-4 p-4 rounded-xl bg-muted/50">
-                      <div className="w-10 h-10 rounded-lg bg-gradient-navy flex items-center justify-center flex-shrink-0">
-                        <Clock className="h-5 w-5 text-[#dfdcd3]" />
-                      </div>
-                      <div>
-                        <div className="font-semibold text-foreground">{t("contact.workingHours")}</div>
-                        <div className="text-sm text-muted-foreground">
-                          Monday - Saturday: 9:00 AM - 5:00 PM<br />
-                          Sunday: Closed
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  <label className="block text-[12px] font-medium text-[#1a1a1a]/60 mb-2 uppercase tracking-wider">{t("contact.subject")}</label>
+                  <input
+                    required
+                    value={formData.subject}
+                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                    className="w-full border border-[#1a1a1a]/15 bg-transparent px-4 py-3 text-[14px] text-[#1a1a1a] placeholder:text-[#1a1a1a]/30 outline-none focus:border-[#123524] transition-colors"
+                  />
                 </div>
-              </div>
+
+                <div>
+                  <label className="block text-[12px] font-medium text-[#1a1a1a]/60 mb-2 uppercase tracking-wider">{t("contact.message")}</label>
+                  <textarea
+                    required
+                    rows={5}
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    className="w-full border border-[#1a1a1a]/15 bg-transparent px-4 py-3 text-[14px] text-[#1a1a1a] placeholder:text-[#1a1a1a]/30 outline-none focus:border-[#123524] transition-colors resize-none"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="flex items-center gap-2 h-[52px] px-8 bg-[#123524] text-[#FAF5EE] text-[14px] font-medium hover:bg-[#0e2a1c] transition-colors disabled:opacity-50">
+                  {isSubmitting ? t("contact.sending") : (
+                    <>{t("contact.send")} <ArrowRight className="w-4 h-4" /></>
+                  )}
+                </button>
+              </form>
             </div>
           </div>
-        </section>
-
-        {/* Branches */}
-        <section className="py-20 bg-muted/30">
-          <div className="container">
-            <div className="text-center max-w-2xl mx-auto mb-12">
-              <h2 className="font-display text-3xl font-bold text-foreground mb-4">
-                {t("contact.branches")} <span className="text-[#960f1e]">{t("contact.branchesHighlight")}</span>
-              </h2>
-              <p className="text-muted-foreground">
-                {t("contact.branchesDesc")}
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              {branches.map((branch) => (
-                <div
-                  key={branch.name}
-                  className="bg-card rounded-xl border border-border p-6 hover:shadow-lg transition-shadow"
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 rounded-lg bg-[#960f1e]/10 flex items-center justify-center">
-                      <Building2 className="h-5 w-5 text-[#960f1e]" />
-                    </div>
-                    <h3 className="font-display text-lg font-semibold text-foreground">
-                      {branch.name}
-                    </h3>
-                  </div>
-                  <div className="space-y-3 text-sm">
-                    <div className="flex items-start gap-2 text-muted-foreground">
-                      <MapPin className="h-4 w-4 text-[#960f1e] mt-0.5 flex-shrink-0" />
-                      <span>{branch.address}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-muted-foreground">
-                      <Phone className="h-4 w-4 text-[#960f1e] flex-shrink-0" />
-                      <span>{branch.phone}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-muted-foreground">
-                      <Mail className="h-4 w-4 text-[#960f1e] flex-shrink-0" />
-                      <span>{branch.email}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-muted-foreground">
-                      <Clock className="h-4 w-4 text-[#960f1e] flex-shrink-0" />
-                      <span>{branch.hours}</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        </div>
       </main>
       <Footer />
     </div>
@@ -318,3 +156,4 @@ const Contact = () => {
 };
 
 export default Contact;
+

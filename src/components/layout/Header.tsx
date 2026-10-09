@@ -1,157 +1,86 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, X, Shield, ChevronDown, Globe } from "lucide-react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Label } from "recharts";
+import path from "path";
 
 export function Header() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const { language, setLanguage, t } = useLanguage();
 
-  const isActive = (path: string) => location.pathname === path;
-
-  const navLinks = [
-    { name: t("nav.home"), path: "/" },
-    { name: t("nav.services"), path: "/services" },
-    { name: t("nav.contact"), path: "/contact" },
-  ];
-
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/80">
-      <div className="container flex h-20 items-center justify-between">
-        {/* Logo */}
-        <Link to="/" className="flex items-center gap-3 group">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full  transition-shadow">
-            <img src="/SBGA.png" alt="SBGA Logo" className="h-12 drop-shadow-8xl shadow-blue-500" />
-          </div>
-          <div className="hidden sm:block">
-            <h1 className="font-['Montserrat'] text-lg font-bold text-[#1f3759] leading-tight">
-              Sri Basaveshwara
-            </h1>
-            <p className="font-['Anek_Kannada'] font-semibold text-xs text-[#1f3759]/80">
-              Graminabhirudhi Trust (R.)
-            </p>
-          </div>
+    <>
+      <style>{`
+        .hero-nav-item { color: rgba(250,245,238,0.85); transition: color 0.15s; }
+        .hero-nav-item:hover { color: #FAF5EE; }
+      `}</style>
+
+      {/* Header positioned absolutely over the dark hero sections */}
+      <header className="absolute top-[22px] left-[20px] sm:left-[32px] lg:left-[56px] right-[20px] sm:right-[32px] lg:right-[56px] flex justify-between items-center z-50">
+        <Link to="/" className="flex items-center group">
+          <img src="/logo/NC-LOGO.png" alt="Nabhay Chits" className="h-20 w-auto" />
         </Link>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-1">
-          {navLinks.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              className={`px-4 py-2 text-sm font-semibold font-['Montserrat'] rounded-md transition-colors ${isActive(link.path)
-                ? "text-[#960f1e] bg-[#960f1e]/5"
-                : "text-[#1f3759]/80 hover:text-[#1f3759] hover:bg-[#1f3759]/5"
-                }`}
-            >
-              {link.name}
-            </Link>
-          ))}
-        </nav>
 
-        {/* Desktop CTA */}
-        <div className="hidden md:flex items-center gap-3">
-          {/* Language Toggle */}
-          <Button
-            variant="outline"
-            size="sm"
+        {/* Desktop nav */}
+        <div className="hidden lg:flex items-center h-[58px] bg-black/[0.18] border border-white/[0.06] backdrop-blur-sm">
+          <nav className="flex items-center h-full">
+            {[
+              { label: t("nav.services"), path: "#services" },
+              { label: "About Us", path: "/#about" },
+              // { label: t("nav.home"), path: "/" },
+              { label: t("Scheames"), path: "/scheames" },
+            ].map((item) => (
+              <Link key={item.path} to={item.path}
+                className="hero-nav-item flex items-center gap-1.5 h-full px-6 text-[15px] font-medium border-r border-white/[0.08]">
+                {item.label}
+                <ChevronDown className="w-3.5 h-3.5 opacity-50" />
+              </Link>
+            ))}
+          </nav>
+          <Link to="/contact"
+            className="h-full px-7 bg-white text-[#123524] flex items-center text-[15px] font-medium hover:bg-[#f5f0e8] transition-colors">
+            {t("nav.contact")}
+          </Link>
+          <button
             onClick={() => setLanguage(language === "en" ? "kn" : "en")}
-            className="gap-2 font-medium"
-          >
-            <Globe className="h-4 w-4" />
+            className="h-full px-5 text-[#FAF5EE]/60 text-[13px] hover:text-[#FAF5EE] transition-colors border-l border-white/[0.08]">
             {language === "en" ? "ಕನ್ನಡ" : "English"}
-          </Button>
-
-          {/* <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline" className="gap-2">
-                {t("nav.login")} <ChevronDown className="h-4 w-4" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-48">
-              <DropdownMenuItem asChild>
-                <Link to="/login" className="w-full cursor-pointer">
-                  {t("nav.customerLogin")}
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link to="/admin/login" className="w-full cursor-pointer">
-                  {t("nav.adminLogin")}
-                </Link>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu> */}
-          <Button variant="hero" asChild>
-            <Link to="/services">{t("nav.getStarted")}</Link>
-          </Button>
+          </button>
         </div>
 
-        {/* Mobile Menu */}
-        <Sheet open={isOpen} onOpenChange={setIsOpen}>
-          <SheetTrigger asChild className="md:hidden">
-            <Button variant="ghost" size="icon">
-              <Menu className="h-6 w-6" />
-              <span className="sr-only">Toggle menu</span>
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="right" className="w-[300px] bg-card">
-            <div className="flex flex-col gap-6 mt-8">
-              {/* Language Toggle Mobile */}
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => setLanguage(language === "en" ? "kn" : "en")}
-                className="gap-2 font-medium w-full"
-              >
-                <Globe className="h-4 w-4" />
-                {language === "en" ? "ಕನ್ನಡ" : "English"}
-              </Button>
+        {/* Mobile hamburger */}
+        <button className="lg:hidden p-2 text-white" onClick={() => setMenuOpen(!menuOpen)}>
+          {menuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
+        </button>
+      </header>
 
-              <nav className="flex flex-col gap-2">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.path}
-                    to={link.path}
-                    onClick={() => setIsOpen(false)}
-                    className={`px-4 py-3 text-base font-semibold font-['Montserrat'] rounded-md transition-colors ${isActive(link.path)
-                      ? "text-[#960f1e] bg-[#960f1e]/5"
-                      : "text-[#1f3759]/80 hover:text-[#1f3759] hover:bg-[#1f3759]/5"
-                      }`}
-                  >
-                    {link.name}
-                  </Link>
-                ))}
-              </nav>
-              <div className="flex flex-col gap-3 pt-4 border-t">
-                <Button variant="outline" asChild className="w-full">
-                  <Link to="/login" onClick={() => setIsOpen(false)}>
-                    {t("nav.customerLogin")}
-                  </Link>
-                </Button>
-                <Button variant="navyGold" asChild className="w-full">
-                  <Link to="/admin/login" onClick={() => setIsOpen(false)}>
-                    {t("nav.adminLogin")}
-                  </Link>
-                </Button>
-                <Button variant="hero" asChild className="w-full">
-                  <Link to="/services" onClick={() => setIsOpen(false)}>
-                    {t("nav.getStarted")}
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </SheetContent>
-        </Sheet>
-      </div>
-    </header>
+      {/* Mobile menu */}
+      {menuOpen && (
+        <div className="lg:hidden absolute top-[80px] left-[20px] right-[20px] sm:left-[32px] sm:right-[32px] bg-[#0e2a1c] z-50 px-6 py-6 flex flex-col gap-4 border border-white/10 shadow-xl backdrop-blur-sm">
+          {[
+            { label: t("nav.home"), path: "/" },
+            { label: t("nav.services"), path: "/services" },
+            { label: t("scheames.title"), path: "/scheames" },
+            { label: "About Us", path: "/#about" },
+            { label: t("nav.contact"), path: "/contact" },
+          ].map((item) => (
+            <Link key={item.path} to={item.path} className="text-[#FAF5EE]/80 text-base font-medium" onClick={() => setMenuOpen(false)}>
+              {item.label}
+            </Link>
+          ))}
+          <button
+            onClick={() => {
+              setLanguage(language === "en" ? "kn" : "en");
+              setMenuOpen(false);
+            }}
+            className="text-left text-[#c59822] text-base font-medium mt-2 pt-4 border-t border-white/10">
+            Switch to {language === "en" ? "ಕನ್ನಡ" : "English"}
+          </button>
+        </div>
+      )}
+    </>
   );
 }

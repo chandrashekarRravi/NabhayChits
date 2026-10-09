@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ["Playfair Display", "serif"],
-        sans: ["Inter", "sans-serif"],
+        cormorant: ["Cormorant Garamond", "serif"],
+        sans: ["Hanken Grotesk", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -122,3 +122,4 @@ export default {
   },
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;
+

@@ -1,77 +1,137 @@
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Shield } from "lucide-react";
+import { ArrowRight, TrendingUp, Users, Award } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ChevronDown, ChevronsDown, Menu, X } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { HeroChart } from "@/components/home/HeroChart";
 
 export function HeroSection() {
-  const { t } = useLanguage();
+  const { t, language, setLanguage } = useLanguage();
+  const [mounted, setMounted] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const stats = [
+    { icon: Award, value: t("hero.stat1Value"), label: t("hero.stat1Label") },
+    { icon: TrendingUp, value: t("hero.stat2Value"), label: t("hero.stat2Label") },
+    { icon: Users, value: t("hero.stat3Value"), label: t("hero.stat3Label") },
+  ];
 
   return (
-    <section className="relative overflow-hidden bg-[#dfdcd3] min-h-[90vh] flex items-center">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }} />
-      </div>
+    <>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&family=Cormorant+Garamond:wght@600&display=swap');
+        .font-hanken { font-family: 'Hanken Grotesk', sans-serif; }
+        .font-cormorant { font-family: 'Cormorant Garamond', serif; }
+        .hero-nav-item { color: rgba(250,245,238,0.85); transition: color 0.15s; }
+        .hero-nav-item:hover { color: #FAF5EE; }
+      `}</style>
 
-      {/* Decorative Elements */}
-      <div className="absolute top-20 right-10 w-72 h-72 bg-[#960f1e]/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 left-10 w-96 h-96 bg-[#960f1e]/5 rounded-full blur-3xl" />
+      <section className="relative min-h-screen w-full bg-[#123524] overflow-hidden text-[#FAF5EE] flex flex-col px-[20px] sm:px-[32px] lg:px-[56px]">
+        {/* Candlestick Animated Chart Visual */}
+        <HeroChart />
 
-      <div className="container relative z-10 py-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Content */}
-          <div className="text-center lg:text-left space-y-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#960f1e]/10 border border-[#960f1e]/20 text-[#960f1e] text-sm font-semibold font-['Montserrat'] animate-fade-up">
-              <Shield className="h-4 w-4" />
-              {t("hero.badge")}
-            </div>
+        {/* Header */}
+        {/* <header className="absolute top-[22px] left-[20px] sm:left-[32px] lg:left-[56px] right-[20px] sm:right-[32px] lg:right-[56px] flex justify-between items-center z-20">
+          <Link to="/" className="flex items-center">
+            <img src="/logo/NC-LOGO.png" alt="Nabhay Chits" className="h-0 w-auto" />
+          </Link>
 
-            <h1 className="font-['Montserrat'] text-4xl sm:text-5xl lg:text-6xl font-bold text-[#1f3759] leading-tight animate-fade-up" style={{ animationDelay: "0.1s" }}>
-              {t("hero.title1")}{" "}
-              <span className="text-[#960f1e]">{t("hero.titleHighlight")}</span>{" "}
-              {t("hero.title2")}
-            </h1>
+          {/* Desktop nav */}
+        {/* <div className="hidden lg:flex items-center h-[58px] bg-black/[0.18] border border-white/[0.06] backdrop-blur-sm">
+            <nav className="flex items-center h-full">
+              {[
+                { label: t("nav.services"), path: "/services" },
+                { label: "About Us", path: "/#about" },
+                { label: t("nav.home"), path: "/" },
+              ].map((item) => (
+                <Link key={item.path} to={item.path}
+                  className="hero-nav-item flex items-center gap-1.5 h-full px-6 text-[15px] font-medium border-r border-white/[0.08]">
+                  {item.label}
+                  <ChevronDown className="w-3.5 h-3.5 opacity-50" />
+                </Link>
+              ))}
+            </nav>
+            <Link to="/contact"
+              className="h-full px-7 bg-white text-[#123524] flex items-center text-[15px] font-medium hover:bg-[#f5f0e8] transition-colors">
+              {t("nav.contact")}
+            </Link>
+            <button
+              onClick={() => setLanguage(language === "en" ? "kn" : "en")}
+              className="h-full px-5 text-[#FAF5EE]/60 text-[13px] hover:text-[#FAF5EE] transition-colors border-l border-white/[0.08]">
+              {language === "en" ? "ಕನ್ನಡ" : "English"}
+            </button>
+          </div> 
 
-            <p className="font-['Anek_Kannada'] font-semibold text-lg sm:text-xl text-[#1f3759]/80 max-w-xl mx-auto lg:mx-0 animate-fade-up" style={{ animationDelay: "0.2s" }}>
+          {/* Mobile hamburger */}
+        {/* <button className="lg:hidden p-2 text-white" onClick={() => setMenuOpen(!menuOpen)}>
+            {menuOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
+          </button> */}
+
+
+        {/* Mobile menu */}
+        {menuOpen && (
+          <div className="lg:hidden absolute top-[80px] left-0 right-0 bg-[#0e2a1c] z-30 px-6 py-6 flex flex-col gap-4 border-t border-white/10">
+            {[t("nav.home"), t("nav.services"), "About Us", t("nav.contact")].map((item) => (
+              <span key={item} className="text-[#FAF5EE]/80 text-base font-medium cursor-pointer">{item}</span>
+            ))}
+          </div>
+        )}
+
+        {/* Headline — upper-middle */}
+        <div className="flex-1 flex flex-col justify-center z-10 pt-[120px] pb-[140px]">
+          <h1 className={`text-[clamp(44px,6vw,116px)] leading-[1.04] tracking-[-0.02em] font-normal max-w-[900px] transition-all duration-700 ease-out ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}>
+            {t("hero.title1")}<br />
+            <span>{t("hero.titleHighlight")}</span>
+          </h1>
+        </div>
+
+        {/* Vertical label */}
+        <div className="hidden lg:block absolute right-[56px] top-[38%] rotate-90 origin-right text-[11px] tracking-[0.05em] text-[#FAF5EE]/30 uppercase whitespace-nowrap z-10">
+          Tumkur, Karnataka
+        </div>
+
+        {/* Bottom strip */}
+        <div className={`absolute bottom-0 left-[20px] sm:left-[32px] lg:left-[56px] right-[20px] sm:right-[32px] lg:right-[56px] border-t border-white/[0.15] transition-all duration-700 delay-200 ${mounted ? "opacity-100" : "opacity-0"
+          }`}>
+          {/* Stats row */}
+          <div className="flex gap-12 py-5 border-b border-white/[0.08]">
+            {stats.map((s) => (
+              <div key={s.label}>
+                <div className="text-[22px] font-semibold text-[#c59822] leading-none">{s.value}</div>
+                <div className="text-[11px] text-[#FAF5EE]/45 mt-1 tracking-wide">{s.label}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Tagline + scroll + buttons */}
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 py-6">
+            <p className="text-[15px] leading-[1.45] text-[#FAF5EE]/65 max-w-[500px] font-normal">
               {t("hero.description")}
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-up" style={{ animationDelay: "0.3s" }}>
-              <Button variant="hero" size="xl" asChild className="group">
-                <Link to="/services">
-                  {t("hero.exploreServices")}
-                  <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </Button>
+            <div className="hidden lg:flex flex-col items-center opacity-40 animate-bounce">
+              <ChevronsDown className="w-5 h-5" />
             </div>
 
-          </div>
-
-          {/* Hero Visual */}
-          <div className="hidden lg:flex items-center justify-center relative">
-            <div className="relative animate-float">
-              <img
-                src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=500&fit=crop"
-                alt="Rural banking"
-                className="rounded-2xl shadow-2xl border border-primary-foreground/10 object-cover w-full max-w-md h-[420px]"
-              />
-              {/* Floating Badge */}
-              <div className="absolute -top-4 -right-4 bg-[#960f1e] text-[#dfdcd3] px-4 py-2 rounded-full shadow-lg font-['Montserrat'] font-semibold text-sm">
-                {t("hero.secureTrusted")}
-              </div>
+            <div className="flex flex-col sm:flex-row gap-[18px] w-full lg:w-auto">
+              <Link to="/services"
+                className="w-full sm:w-[167px] h-[54px] flex items-center justify-center border border-[#FAF5EE]/30 text-[15px] font-medium text-[#FAF5EE] hover:bg-white/[0.07] transition-colors duration-200">
+                {t("hero.exploreServices")}
+              </Link>
+              <Link to="/contact"
+                className="w-full sm:w-[167px] h-[54px] flex items-center justify-center bg-[#c59822] text-[15px] font-medium text-[#123524] hover:brightness-110 transition-all duration-200">
+                {t("nav.contact")}
+              </Link>
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Bottom Wave */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
-          <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="hsl(var(--background))"/>
-        </svg>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
+

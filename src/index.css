@@ -1,130 +1,53 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* 
-  SHRI BASAVESHWARA GRAMEENA ABIVRUDHI TRUST
-  Design System - Professional Banking Aesthetic
-  Colors: Deep Navy, Gold Accents, Clean Whites
+  NABHAY CHITS
+  Design System
 */
 
 @layer base {
   :root {
-    /* Core Banking Colors */
-    --background: 210 20% 98%;
-    --foreground: 213 45% 15%;
+    /* Ivory Background */
+    --background: 40 30% 98%;
+    /* Dark Charcoal Text */
+    --foreground: 210 10% 20%;
 
     --card: 0 0% 100%;
-    --card-foreground: 213 45% 15%;
+    --card-foreground: 210 10% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 213 45% 15%;
+    --popover-foreground: 210 10% 20%;
 
-    /* Primary - Deep Navy Blue */
-    --primary: 213 55% 20%;
-    --primary-foreground: 45 100% 96%;
+    /* Primary - Deep Forest Green */
+    --primary: 155 45% 25%;
+    --primary-foreground: 40 30% 98%;
 
-    /* Secondary - Light Slate */
-    --secondary: 210 25% 95%;
-    --secondary-foreground: 213 45% 20%;
+    /* Secondary - Dark Teal */
+    --secondary: 175 40% 25%;
+    --secondary-foreground: 40 30% 98%;
 
-    /* Muted - Soft Gray */
-    --muted: 210 20% 94%;
-    --muted-foreground: 215 15% 45%;
+    /* Muted - Soft Gray/Ivory */
+    --muted: 40 20% 92%;
+    --muted-foreground: 210 10% 45%;
 
-    /* Accent - Royal Gold */
-    --accent: 40 70% 50%;
-    --accent-foreground: 213 55% 15%;
+    /* Accent - Warm Gold */
+    --accent: 42 80% 55%;
+    --accent-foreground: 210 10% 20%;
 
     /* Destructive */
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
     /* Borders & Inputs */
-    --border: 214 25% 88%;
-    --input: 214 25% 88%;
-    --ring: 40 70% 50%;
+    --border: 40 15% 85%;
+    --input: 40 15% 85%;
+    --ring: 155 45% 25%;
 
-    --radius: 0.5rem;
-
-    /* Custom Banking Colors */
-    --navy: 213 55% 20%;
-    --navy-light: 213 45% 30%;
-    --navy-dark: 213 60% 12%;
-    --gold: 40 70% 50%;
-    --gold-light: 45 80% 60%;
-    --gold-dark: 38 65% 40%;
-    --success: 142 70% 40%;
-    --warning: 38 92% 50%;
-
-    /* Gradients */
-    --gradient-navy: linear-gradient(135deg, hsl(213 55% 20%) 0%, hsl(213 60% 12%) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(40 70% 50%) 0%, hsl(38 65% 40%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(213 55% 20%) 0%, hsl(213 45% 30%) 50%, hsl(213 60% 12%) 100%);
-    
-    /* Shadows */
-    --shadow-sm: 0 1px 2px 0 hsl(213 55% 20% / 0.05);
-    --shadow-md: 0 4px 6px -1px hsl(213 55% 20% / 0.1), 0 2px 4px -2px hsl(213 55% 20% / 0.1);
-    --shadow-lg: 0 10px 15px -3px hsl(213 55% 20% / 0.1), 0 4px 6px -4px hsl(213 55% 20% / 0.1);
-    --shadow-gold: 0 4px 14px 0 hsl(40 70% 50% / 0.3);
-
-    /* Sidebar */
-    --sidebar-background: 213 55% 20%;
-    --sidebar-foreground: 45 100% 96%;
-    --sidebar-primary: 40 70% 50%;
-    --sidebar-primary-foreground: 213 55% 15%;
-    --sidebar-accent: 213 45% 25%;
-    --sidebar-accent-foreground: 45 100% 96%;
-    --sidebar-border: 213 45% 25%;
-    --sidebar-ring: 40 70% 50%;
-  }
-
-  .dark {
-    --background: 213 60% 8%;
-    --foreground: 210 30% 95%;
-
-    --card: 213 55% 12%;
-    --card-foreground: 210 30% 95%;
-
-    --popover: 213 55% 12%;
-    --popover-foreground: 210 30% 95%;
-
-    --primary: 40 70% 50%;
-    --primary-foreground: 213 55% 10%;
-
-    --secondary: 213 45% 18%;
-    --secondary-foreground: 210 30% 95%;
-
-    --muted: 213 40% 15%;
-    --muted-foreground: 215 20% 65%;
-
-    --accent: 40 70% 50%;
-    --accent-foreground: 213 55% 10%;
-
-    --destructive: 0 62% 45%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 213 40% 20%;
-    --input: 213 40% 20%;
-    --ring: 40 70% 50%;
-
-    --navy: 213 55% 25%;
-    --navy-light: 213 45% 35%;
-    --navy-dark: 213 60% 8%;
-    --gold: 40 75% 55%;
-    --gold-light: 45 85% 65%;
-    --gold-dark: 38 70% 45%;
-
-    --sidebar-background: 213 60% 8%;
-    --sidebar-foreground: 210 30% 95%;
-    --sidebar-primary: 40 75% 55%;
-    --sidebar-primary-foreground: 213 55% 10%;
-    --sidebar-accent: 213 45% 15%;
-    --sidebar-accent-foreground: 210 30% 95%;
-    --sidebar-border: 213 45% 15%;
-    --sidebar-ring: 40 75% 55%;
+    --radius: 0.75rem;
   }
 }
 
@@ -139,11 +62,11 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Hanken Grotesk', sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Hanken Grotesk', sans-serif;
     @apply font-semibold tracking-tight;
   }
 }
@@ -151,23 +74,23 @@
 @layer components {
   .text-gradient-gold {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(40 70% 50%) 0%, hsl(45 80% 60%) 100%);
+    background-image: linear-gradient(135deg, hsl(42 80% 55%) 0%, hsl(42 90% 65%) 100%);
   }
 
   .bg-gradient-navy {
-    background: linear-gradient(135deg, hsl(213 55% 20%) 0%, hsl(213 60% 12%) 100%);
+    background: linear-gradient(135deg, hsl(155 45% 25%) 0%, hsl(155 55% 15%) 100%);
   }
 
   .bg-gradient-hero {
-    background: linear-gradient(135deg, hsl(213 55% 20%) 0%, hsl(213 45% 30%) 50%, hsl(213 60% 12%) 100%);
+    background: linear-gradient(135deg, hsl(155 45% 25%) 0%, hsl(155 40% 30%) 50%, hsl(155 55% 15%) 100%);
   }
 
   .shadow-banking {
-    box-shadow: 0 10px 40px -10px hsl(213 55% 20% / 0.2);
+    box-shadow: 0 10px 40px -10px hsl(155 45% 25% / 0.2);
   }
 
   .shadow-gold-glow {
-    box-shadow: 0 4px 20px 0 hsl(40 70% 50% / 0.25);
+    box-shadow: 0 4px 20px 0 hsl(42 80% 55% / 0.25);
   }
 
   .card-banking {
@@ -192,7 +115,7 @@
 
   .hover-lift:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 40px -8px hsl(213 55% 20% / 0.15);
+    box-shadow: 0 12px 40px -8px hsl(155 45% 25% / 0.15);
   }
 }
 
@@ -240,11 +163,12 @@
   .animate-shimmer {
     background: linear-gradient(
       90deg,
-      hsl(40 70% 50% / 0) 0%,
-      hsl(40 70% 50% / 0.3) 50%,
-      hsl(40 70% 50% / 0) 100%
+      hsl(42 80% 55% / 0) 0%,
+      hsl(42 80% 55% / 0.3) 50%,
+      hsl(42 80% 55% / 0) 100%
     );
     background-size: 200% 100%;
     animation: shimmer 2s infinite;
   }
 }
+
