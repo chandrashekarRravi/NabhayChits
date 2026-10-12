@@ -4,14 +4,6 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 /**
  * Terms & Conditions page for Nabhay Chits.
- *
- * Legal verification status (October 2026):
- * - Permit/certificate number: NOT YET VERIFIED — omitted
- * - Regulatory authority details: NOT YET VERIFIED — omitted
- * - Penalty rates and deadlines: NOT YET VERIFIED — generic language used
- * - Chit Agreement document: NOT YET ATTACHED — referenced as governing document
- *
- * Do not alter the intended meaning of any clause without client instruction.
  */
 
 type Clause = { id: string; en: { title: string; body: string }; kn: { title: string; body: string } };
@@ -282,23 +274,23 @@ const Terms = () => {
       <main className="flex-1">
         <section className="bg-[#123524]">
           <div className="border-t border-white/10">
-            <div className="max-w-[1400px] mx-auto px-[56px] md:px-[32px] sm:px-[20px] pt-32 pb-24">
-              <p className="text-[11px] tracking-[0.2em] uppercase text-[#c59822] mb-8">
+            <div className="mx-auto px-4 sm:px-8 lg:px-14 pt-28 sm:pt-36 pb-16 sm:pb-24">
+              <p className="nc-label text-[#c59822] mb-6 sm:mb-8">
                 {isKn ? "ಕಾನೂನು ಮಾಹಿತಿ" : "Legal Information"}
               </p>
-              <h1 className="font-cormorant text-[clamp(40px,5vw,80px)] font-normal leading-[1.05] text-[#FAF5EE] max-w-xl">
+              <h1 className="nc-page-h1 text-[#FAF5EE] max-w-2xl">
                 {isKn ? "ನಿಯಮಗಳು ಮತ್ತು ಷರತ್ತುಗಳು" : "Terms & Conditions"}
               </h1>
             </div>
           </div>
         </section>
 
-        <section className="py-20">
-          <div className="max-w-[800px] mx-auto px-[56px] md:px-[32px] sm:px-[20px]">
+        <section className="py-12 sm:py-16 lg:py-20">
+          <div className="max-w-4xl mx-auto px-4 sm:px-8 lg:px-14">
 
             {/* Prominent disclaimer */}
-            <div className="bg-white p-6 mb-12 border-l-4 border-[#c59822]">
-              <p className="text-sm text-[#1a1a1a]/80 leading-relaxed">
+            <div className="bg-white p-5 sm:p-6 mb-8 sm:mb-12 border-l-4 border-[#c59822] rounded-sm shadow-sm">
+              <p className="nc-body text-[#1a1a1a]/85 leading-relaxed">
                 {isKn
                   ? "ಈ ವೆಬ್‌ಸೈಟ್ ವಿಷಯವು ಕೇವಲ ಮಾಹಿತಿ ಉದ್ದೇಶಕ್ಕಾಗಿ. ನಿಮ್ಮ ನಿಜವಾದ ನಿಯಮಗಳು ಮತ್ತು ಜವಾಬ್ದಾರಿಗಳು ಅನ್ವಯವಾಗುವ ಚಿಟ್ ಒಪ್ಪಂದ ಮತ್ತು ಯೋಜನೆ ದಾಖಲಾತಿಯನ್ನು ಅವಲಂಬಿಸಿರುತ್ತವೆ. ಸೇರ್ಪಡೆ ಮೊದಲು ಸಂಪೂರ್ಣ ಚಿಟ್ ಒಪ್ಪಂದ ಓದಿ ಅರ್ಥ ಮಾಡಿಕೊಳ್ಳಿ."
                   : "The content on this website is for informational purposes only. Your actual rights and obligations are governed by the applicable Chit Agreement and scheme documentation. Please read and understand the complete Chit Agreement before joining any scheme."}
@@ -306,12 +298,12 @@ const Terms = () => {
             </div>
 
             {/* Contact box */}
-            <div className="bg-[#123524] text-[#FAF5EE] p-6 mb-12">
-              <p className="text-[11px] uppercase tracking-[0.15em] text-[#c59822] mb-3">
+            <div className="bg-[#123524] text-[#FAF5EE] p-5 sm:p-6 mb-8 sm:mb-12 rounded-sm shadow-md">
+              <p className="nc-label text-[#c59822] mb-3">
                 {isKn ? "ಸಂಪರ್ಕ ಮತ್ತು ಕಚೇರಿ" : "Contact & Office"}
               </p>
-              <address className="not-italic text-sm leading-relaxed text-[#FAF5EE]/80">
-                <strong className="text-[#FAF5EE]">Nabhay Chits</strong><br />
+              <address className="not-italic nc-body-sm text-[#FAF5EE]/85 leading-relaxed">
+                <strong className="text-[#FAF5EE] font-normal">Nabhay Chits</strong><br />
                 Opp Guru Wines Road, Behind Vijaya Motors<br />
                 Maruthi Nagar, Tumkur – 572102, Karnataka<br />
                 <a href="tel:+919742130555" className="text-[#c59822] hover:underline">+91 9742130555</a>
@@ -321,21 +313,21 @@ const Terms = () => {
             </div>
 
             {/* Clauses */}
-            <div className="space-y-8">
+            <div className="space-y-6 sm:space-y-8">
               {CLAUSES.map((c) => {
                 const clause = isKn ? c.kn : c.en;
                 return (
-                  <div key={c.id} className="pb-8 border-b border-[#1a1a1a]/10 last:border-0">
-                    <h2 className="text-lg font-semibold text-[#1a1a1a] mb-3">{clause.title}</h2>
-                    <p className="text-sm text-[#1a1a1a]/70 leading-relaxed">{clause.body}</p>
+                  <div key={c.id} className="pb-6 sm:pb-8 border-b border-[#1a1a1a]/10 last:border-0">
+                    <h2 className="nc-card-h3 text-[#1a1a1a] mb-2 sm:mb-3">{clause.title}</h2>
+                    <p className="nc-body text-[#1a1a1a]/70 leading-relaxed">{clause.body}</p>
                   </div>
                 );
               })}
             </div>
 
             {/* Pending verification note */}
-            <div className="mt-12 p-5 bg-white border border-[#1a1a1a]/10 text-sm text-[#1a1a1a]/60 leading-relaxed">
-              <strong className="text-[#1a1a1a]">
+            <div className="mt-8 sm:mt-12 p-4 sm:p-5 bg-white border border-[#1a1a1a]/10 nc-small text-[#1a1a1a]/65 leading-relaxed rounded-sm">
+              <strong className="text-[#1a1a1a] font-normal">
                 {isKn ? "ಪರಿಶೀಲನೆ ಬಾಕಿ:" : "Pending verification:"}
               </strong>{" "}
               {isKn

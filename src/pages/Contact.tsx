@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { MapPin, Phone, Clock, ArrowRight } from "lucide-react";
+import { FadeInReveal } from "@/components/common/MotionTransitions";
+import { motion } from "framer-motion";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -30,123 +29,125 @@ const Contact = () => {
         {/* Page hero */}
         <section className="bg-[#123524]">
           <div className="border-t border-white/10">
-            <div className="max-w-[1400px] mx-auto px-[56px] md:px-[32px] sm:px-[20px] pt-32 pb-24">
-              <p className="text-[11px] tracking-[0.2em] uppercase text-[#c59822] mb-8">{t("contact.badge")}</p>
-              <h1 className="font-cormorant text-[clamp(40px,5vw,80px)] font-normal leading-[1.05] text-[#FAF5EE] max-w-xl">
+            <FadeInReveal className="mx-auto px-4 sm:px-8 lg:px-14 pt-28 sm:pt-36 pb-16 sm:pb-24">
+              <p className="nc-label text-[#c59822] mb-6 sm:mb-8">{t("contact.badge")}</p>
+              <h1 className="nc-page-h1 text-[#FAF5EE] max-w-xl">
                 {t("contact.title1")}{" "}
-                <span className="italic">{t("contact.titleHighlight")}</span>
+                <em className="not-italic text-[#c59822]">{t("contact.titleHighlight")}</em>
               </h1>
-            </div>
+            </FadeInReveal>
           </div>
         </section>
 
-        {/* Main split */}
+        {/* Main split: contact info first, form below on mobile; 2 cols on lg screens */}
         <div className="border-t border-[#1a1a1a]/10">
-          <div className="max-w-[1400px] mx-auto px-[56px] md:px-[32px] sm:px-[20px] grid lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-[#1a1a1a]/10">
+          <div className="mx-auto px-4 sm:px-8 lg:px-14 grid lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-[#1a1a1a]/10">
 
-            {/* Contact info */}
-            <div className="py-20 pr-0 lg:pr-20 space-y-12">
+            {/* Contact info side */}
+            <FadeInReveal className="py-12 sm:py-16 lg:py-20 pr-0 lg:pr-14 space-y-8 sm:space-y-12">
               <div>
-                <p className="text-[11px] tracking-[0.2em] uppercase text-[#1a1a1a]/35 mb-6">{t("contact.getInTouch")}</p>
-                <p className="text-[14px] text-[#1a1a1a]/55 leading-relaxed max-w-sm">{t("contact.description")}</p>
+                <p className="nc-label text-[#1a1a1a]/40 mb-4 sm:mb-6">{t("contact.getInTouch")}</p>
+                <p className="nc-body text-[#1a1a1a]/65 max-w-md">{t("contact.description")}</p>
               </div>
 
-              <div className="space-y-8">
-                <div className="flex items-start gap-5">
-                  <div className="w-8 h-8 flex items-center justify-center border border-[#1a1a1a]/10 flex-shrink-0 mt-0.5">
-                    <MapPin className="w-3.5 h-3.5 text-[#123524]" />
+              <div className="space-y-6 sm:space-y-8">
+                <div className="flex items-start gap-4 sm:gap-5 group">
+                  <div className="w-10 h-10 flex items-center justify-center border border-[#1a1a1a]/10 flex-shrink-0 mt-0.5 transition-colors group-hover:border-[#123524] group-hover:bg-[#123524]/5 rounded-sm">
+                    <MapPin className="w-4 h-4 text-[#123524] transition-transform duration-200 group-hover:scale-110" />
                   </div>
                   <div>
-                    <p className="text-[12px] font-semibold text-[#1a1a1a] mb-1 tracking-wide uppercase">{t("contact.address")}</p>
-                    <p className="text-[13px] text-[#1a1a1a]/55 leading-relaxed">
+                    <p className="nc-label text-[#1a1a1a] mb-1.5">{t("contact.address")}</p>
+                    <p className="nc-body-sm text-[#1a1a1a]/65 leading-relaxed">
                       Opp Guru Wines Road, Behind Vijaya Motors,<br />
                       Maruthi Nagar, Tumkur - 572102, Karnataka
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-5">
-                  <div className="w-8 h-8 flex items-center justify-center border border-[#1a1a1a]/10 flex-shrink-0 mt-0.5">
-                    <Phone className="w-3.5 h-3.5 text-[#123524]" />
+                <div className="flex items-start gap-4 sm:gap-5 group">
+                  <div className="w-10 h-10 flex items-center justify-center border border-[#1a1a1a]/10 flex-shrink-0 mt-0.5 transition-colors group-hover:border-[#123524] group-hover:bg-[#123524]/5 rounded-sm">
+                    <Phone className="w-4 h-4 text-[#123524] transition-transform duration-200 group-hover:scale-110" />
                   </div>
                   <div>
-                    <p className="text-[12px] font-semibold text-[#1a1a1a] mb-1 tracking-wide uppercase">{t("contact.phone.label")}</p>
-                    <a href="tel:+919742130555" className="block text-[13px] text-[#1a1a1a]/55 hover:text-[#123524] transition-colors">9742130555</a>
-                    <a href="tel:+919538595555" className="block text-[13px] text-[#1a1a1a]/55 hover:text-[#123524] transition-colors">9538595555</a>
+                    <p className="nc-label text-[#1a1a1a] mb-1.5">{t("contact.phone.label")}</p>
+                    <a href="tel:+919742130555" className="block nc-body-sm text-[#1a1a1a]/70 hover:text-[#123524] transition-colors py-0.5">9742130555</a>
+                    <a href="tel:+919538595555" className="block nc-body-sm text-[#1a1a1a]/70 hover:text-[#123524] transition-colors py-0.5">9538595555</a>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-5">
-                  <div className="w-8 h-8 flex items-center justify-center border border-[#1a1a1a]/10 flex-shrink-0 mt-0.5">
-                    <Clock className="w-3.5 h-3.5 text-[#123524]" />
+                <div className="flex items-start gap-4 sm:gap-5 group">
+                  <div className="w-10 h-10 flex items-center justify-center border border-[#1a1a1a]/10 flex-shrink-0 mt-0.5 transition-colors group-hover:border-[#123524] group-hover:bg-[#123524]/5 rounded-sm">
+                    <Clock className="w-4 h-4 text-[#123524] transition-transform duration-200 group-hover:scale-110" />
                   </div>
                   <div>
-                    <p className="text-[12px] font-semibold text-[#1a1a1a] mb-1 tracking-wide uppercase">{t("contact.workingHours")}</p>
-                    <p className="text-[13px] text-[#1a1a1a]/55">Monday – Saturday: 9:00 AM – 6:00 PM</p>
-                    <p className="text-[13px] text-[#1a1a1a]/35">Sunday: Closed</p>
+                    <p className="nc-label text-[#1a1a1a] mb-1.5">{t("contact.workingHours")}</p>
+                    <p className="nc-body-sm text-[#1a1a1a]/65">Monday – Saturday: 9:00 AM – 6:00 PM</p>
+                    <p className="nc-body-sm text-[#1a1a1a]/40">Sunday: Closed</p>
                   </div>
                 </div>
               </div>
-            </div>
+            </FadeInReveal>
 
-            {/* Form */}
-            <div className="py-20 pl-0 lg:pl-20">
-              <p className="text-[11px] tracking-[0.2em] uppercase text-[#1a1a1a]/35 mb-10">{t("contact.sendMessage")}</p>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid sm:grid-cols-2 gap-5">
+            {/* Form side */}
+            <FadeInReveal delay={0.1} className="py-12 sm:py-16 lg:py-20 pl-0 lg:pl-14">
+              <p className="nc-label text-[#1a1a1a]/40 mb-6 sm:mb-8">{t("contact.sendMessage")}</p>
+              <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6 max-w-xl">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                   <div>
-                    <label className="block text-[12px] font-medium text-[#1a1a1a]/60 mb-2 uppercase tracking-wider">{t("contact.fullName")}</label>
+                    <label className="block nc-label text-[#1a1a1a]/60 mb-2">{t("contact.fullName")}</label>
                     <input
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full border border-[#1a1a1a]/15 bg-transparent px-4 py-3 text-[14px] text-[#1a1a1a] placeholder:text-[#1a1a1a]/30 outline-none focus:border-[#123524] transition-colors"
+                      className="w-full border border-[#1a1a1a]/15 bg-transparent px-4 py-3 nc-body-sm text-[#1a1a1a] placeholder:text-[#1a1a1a]/30 outline-none focus:border-[#123524] transition-colors rounded-sm min-h-[44px]"
                     />
                   </div>
                   <div>
-                    <label className="block text-[12px] font-medium text-[#1a1a1a]/60 mb-2 uppercase tracking-wider">{t("contact.phone")}</label>
+                    <label className="block nc-label text-[#1a1a1a]/60 mb-2">{t("contact.phone")}</label>
                     <input
                       type="tel"
                       required
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       placeholder="9XXXXXXXXX"
-                      className="w-full border border-[#1a1a1a]/15 bg-transparent px-4 py-3 text-[14px] text-[#1a1a1a] placeholder:text-[#1a1a1a]/30 outline-none focus:border-[#123524] transition-colors"
+                      className="w-full border border-[#1a1a1a]/15 bg-transparent px-4 py-3 nc-body-sm text-[#1a1a1a] placeholder:text-[#1a1a1a]/30 outline-none focus:border-[#123524] transition-colors rounded-sm min-h-[44px]"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-[12px] font-medium text-[#1a1a1a]/60 mb-2 uppercase tracking-wider">{t("contact.subject")}</label>
+                  <label className="block nc-label text-[#1a1a1a]/60 mb-2">{t("contact.subject")}</label>
                   <input
                     required
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    className="w-full border border-[#1a1a1a]/15 bg-transparent px-4 py-3 text-[14px] text-[#1a1a1a] placeholder:text-[#1a1a1a]/30 outline-none focus:border-[#123524] transition-colors"
+                    className="w-full border border-[#1a1a1a]/15 bg-transparent px-4 py-3 nc-body-sm text-[#1a1a1a] placeholder:text-[#1a1a1a]/30 outline-none focus:border-[#123524] transition-colors rounded-sm min-h-[44px]"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[12px] font-medium text-[#1a1a1a]/60 mb-2 uppercase tracking-wider">{t("contact.message")}</label>
+                  <label className="block nc-label text-[#1a1a1a]/60 mb-2">{t("contact.message")}</label>
                   <textarea
                     required
                     rows={5}
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full border border-[#1a1a1a]/15 bg-transparent px-4 py-3 text-[14px] text-[#1a1a1a] placeholder:text-[#1a1a1a]/30 outline-none focus:border-[#123524] transition-colors resize-none"
+                    className="w-full border border-[#1a1a1a]/15 bg-transparent px-4 py-3 nc-body-sm text-[#1a1a1a] placeholder:text-[#1a1a1a]/30 outline-none focus:border-[#123524] transition-colors resize-none rounded-sm"
                   />
                 </div>
 
-                <button
+                <motion.button
                   type="submit"
                   disabled={isSubmitting}
-                  className="flex items-center gap-2 h-[52px] px-8 bg-[#123524] text-[#FAF5EE] text-[14px] font-medium hover:bg-[#0e2a1c] transition-colors disabled:opacity-50">
+                  whileHover={{ scale: 1.01 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="flex items-center justify-center gap-2 w-full sm:w-auto min-h-[48px] sm:min-h-[52px] px-8 bg-[#123524] text-[#FAF5EE] text-[15px] tracking-[0.01em] hover:bg-[#0e2a1c] transition-colors disabled:opacity-50 font-medium rounded-sm">
                   {isSubmitting ? t("contact.sending") : (
                     <>{t("contact.send")} <ArrowRight className="w-4 h-4" /></>
                   )}
-                </button>
+                </motion.button>
               </form>
-            </div>
+            </FadeInReveal>
           </div>
         </div>
       </main>
@@ -156,4 +157,3 @@ const Contact = () => {
 };
 
 export default Contact;
-

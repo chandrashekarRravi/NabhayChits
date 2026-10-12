@@ -165,30 +165,19 @@ export function HeroChart({
   }, []);
 
   return (
-    // Outer wrapper — absolute positioning inside the hero
+    // Responsive wrapper: scaled, masked, and responsive width
     <div
-      className="absolute right-0 pointer-events-none select-none"
+      className="absolute right-0 pointer-events-none select-none w-full sm:w-[85%] md:w-[70%] lg:w-[62%] top-[12%] sm:top-[10%] bottom-[28%] sm:bottom-[16%] opacity-35 sm:opacity-70 lg:opacity-100 overflow-hidden"
       style={{
-        top: "10%",
-        bottom: "14%",
-        width: "62%",
         zIndex: 1,
         // CSS mask: fade out to the left so it doesn't clash with headline
         maskImage: "linear-gradient(to right, transparent 0%, black 30%, black 100%)",
         WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 30%, black 100%)",
       }}
     >
-      {/* 3-D perspective wrapper */}
+      {/* 3-D perspective wrapper on desktop, subtle on mobile */}
       <div
-        style={{
-          width: "100%",
-          height: "100%",
-          transform: "perspective(1400px) rotateX(18deg) rotateY(-14deg) rotateZ(-3deg)",
-          transformOrigin: "right center",
-          opacity: 0.72,
-        }}
-        // On mobile: no 3-D rotation
-        className="max-sm:!transform-none max-sm:!opacity-40"
+        className="w-full h-full transform-none lg:[transform:perspective(1400px)_rotateX(18deg)_rotateY(-14deg)_rotateZ(-3deg)] origin-right"
       >
         {/* Glow blobs */}
         <div

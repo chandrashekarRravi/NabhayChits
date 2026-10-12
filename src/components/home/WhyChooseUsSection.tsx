@@ -1,5 +1,7 @@
 import { ShieldCheck, Handshake, Headphones, FileText, CheckCircle } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { FadeInReveal, StaggerGroup, fadeUpVariant } from "@/components/common/MotionTransitions";
+import { motion } from "framer-motion";
 
 const ICONS = [ShieldCheck, FileText, Headphones, Handshake, CheckCircle];
 
@@ -18,35 +20,41 @@ export function WhyChooseUsSection() {
     <section className="bg-white">
       {/* Label */}
       <div className="border-t border-[#1a1a1a]/10">
-        <div className="max-w-[1400px] mx-auto px-[56px] md:px-[32px] sm:px-[20px] py-4">
-          <span className="text-[11px] tracking-[0.2em] uppercase text-[#1a1a1a]/35 font-medium">{t("why.badge")}</span>
+        <div className="mx-auto px-4 sm:px-8 lg:px-14 py-4">
+          <span className="nc-label text-[#1a1a1a]/40">{t("why.badge")}</span>
         </div>
       </div>
 
       {/* Split: headline + grid */}
       <div className="border-t border-[#1a1a1a]/10">
-        <div className="max-w-[1400px] mx-auto px-[56px] md:px-[32px] sm:px-[20px] grid lg:grid-cols-[1fr_2fr] divide-y lg:divide-y-0 lg:divide-x divide-[#1a1a1a]/10">
+        <div className="mx-auto px-4 sm:px-8 lg:px-14 grid lg:grid-cols-[1fr_2fr] divide-y lg:divide-y-0 lg:divide-x divide-[#1a1a1a]/10">
           {/* Headline */}
-          <div className="py-20 pr-0 lg:pr-20">
-            <h2 className="font-cormorant text-[clamp(32px,3vw,50px)] font-normal leading-[1.1] text-[#1a1a1a]">
+          <FadeInReveal className="py-12 sm:py-16 lg:py-20 pr-0 lg:pr-16">
+            <h2 className="nc-section-h2 text-[#1a1a1a]">
               {t("why.title1")}<br />
-              <span className="italic text-[#123524]">{t("why.titleHighlight")}</span>
+              <em className="not-italic text-[#123524]">{t("why.titleHighlight")}</em>
             </h2>
-            <p className="text-[13px] text-[#1a1a1a]/50 mt-6 leading-relaxed max-w-xs">{t("why.description")}</p>
-          </div>
+            <p className="nc-small text-[#1a1a1a]/60 mt-4 sm:mt-6 max-w-sm leading-relaxed">{t("why.description")}</p>
+          </FadeInReveal>
 
-          {/* 5-column principles — wrap 3+2 */}
-          <div className="py-20 pl-0 lg:pl-20 grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12 content-start">
+          {/* Principles grid: 1 col mobile, 2/3 cols tablet/desktop */}
+          <StaggerGroup className="py-12 sm:py-16 lg:py-20 pl-0 lg:pl-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 sm:gap-x-10 gap-y-8 sm:gap-y-12 content-start">
             {principles.map((p) => (
-              <div key={p.title}>
-                <div className="w-8 h-8 flex items-center justify-center border border-[#1a1a1a]/10 mb-5">
-                  <p.icon className="w-4 h-4 text-[#123524]" />
+              <motion.div
+                key={p.title}
+                variants={fadeUpVariant}
+                whileHover={{ y: -2 }}
+                transition={{ duration: 0.2 }}
+                className="group"
+              >
+                <div className="w-10 h-10 flex items-center justify-center border border-[#1a1a1a]/10 mb-4 transition-colors group-hover:border-[#123524] group-hover:bg-[#123524]/5 rounded-sm">
+                  <p.icon className="w-4 h-4 text-[#123524] transition-transform duration-200 group-hover:scale-110" />
                 </div>
-                <h3 className="text-[14px] font-semibold text-[#1a1a1a] mb-2">{p.title}</h3>
-                <p className="text-[13px] text-[#1a1a1a]/50 leading-relaxed">{p.description}</p>
-              </div>
+                <h3 className="nc-card-h3 text-[#1a1a1a] mb-2">{p.title}</h3>
+                <p className="nc-small text-[#1a1a1a]/60 leading-relaxed">{p.description}</p>
+              </motion.div>
             ))}
-          </div>
+          </StaggerGroup>
         </div>
       </div>
     </section>

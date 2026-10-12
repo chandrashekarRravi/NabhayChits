@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Layers, CalendarDays, LayoutGrid, HeadphonesIcon } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { FadeInReveal, StaggerGroup, fadeUpVariant } from "@/components/common/MotionTransitions";
+import { motion } from "framer-motion";
 
 export function ServicesSection() {
   const { t } = useLanguage();
@@ -16,40 +18,46 @@ export function ServicesSection() {
     <section className="bg-white">
       {/* Section label */}
       <div className="border-t border-[#1a1a1a]/10">
-        <div className="max-w-[1400px] mx-auto px-[56px] md:px-[32px] sm:px-[20px] py-4 flex items-center justify-between">
-          <span className="text-[11px] tracking-[0.08em] uppercase text-[#1a1a1a]/35 font-normal">{t("services.badge")}</span>
-          <Link to="/services" className="text-[12px] text-[#123524] hover:underline flex items-center gap-1 transition-colors tracking-[0.01em]">
-            {t("services.viewAll")} <ArrowRight className="w-3 h-3" />
+        <div className="mx-auto px-4 sm:px-8 lg:px-14 py-4 flex items-center justify-between">
+          <span className="nc-label text-[#1a1a1a]/40">{t("services.badge")}</span>
+          <Link to="/services" className="text-[13px] text-[#123524] hover:underline flex items-center gap-1.5 transition-colors tracking-[0.01em] min-h-[44px]">
+            {t("services.viewAll")} <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
       </div>
 
       {/* Headline */}
       <div className="border-t border-[#1a1a1a]/10">
-        <div className="max-w-[1400px] mx-auto px-[56px] md:px-[32px] sm:px-[20px] py-16">
-          <h2 className="font-cormorant text-[clamp(30px,3vw,42px)] font-normal leading-[1.2] tracking-[-0.03em] text-[#1a1a1a] max-w-xl">
-            {t("services.title1")} <span className="text-[#123524]">{t("services.titleHighlight")}</span>
+        <FadeInReveal className="mx-auto px-4 sm:px-8 lg:px-14 py-12 sm:py-16">
+          <h2 className="nc-section-h2 text-[#1a1a1a] max-w-2xl">
+            {t("services.title1")} <em className="not-italic text-[#123524]">{t("services.titleHighlight")}</em>
           </h2>
-        </div>
+        </FadeInReveal>
       </div>
 
-      {/* Services grid — 4 columns with dividers */}
+      {/* Services grid — 1 col on mobile, 2 cols on tablet, 4 cols on desktop */}
       <div className="border-t border-[#1a1a1a]/10">
-        <div className="max-w-[1400px] mx-auto px-[56px] md:px-[32px] sm:px-[20px]">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 divide-x-0 sm:divide-x divide-[#1a1a1a]/10">
+        <div className="mx-auto px-4 sm:px-8 lg:px-14">
+          <StaggerGroup className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-[#1a1a1a]/10">
             {services.map((s) => (
-              <div key={s.title} className="py-12 px-0 sm:px-10 first:pl-0 last:pr-0 group">
-                <div className="w-9 h-9 flex items-center justify-center border border-[#1a1a1a]/10 mb-8">
-                  <s.icon className="w-4 h-4 text-[#123524]" />
+              <motion.div
+                key={s.title}
+                variants={fadeUpVariant}
+                whileHover={{ y: -3 }}
+                transition={{ duration: 0.2 }}
+                className="py-8 sm:py-12 px-0 sm:px-6 lg:px-8 first:pl-0 last:pr-0 group"
+              >
+                <div className="w-10 h-10 flex items-center justify-center border border-[#1a1a1a]/10 mb-6 transition-colors group-hover:border-[#123524] group-hover:bg-[#123524]/5 rounded-sm">
+                  <s.icon className="w-4 h-4 text-[#123524] transition-transform duration-200 group-hover:scale-110" />
                 </div>
-                <h3 className="text-[clamp(16px,1.5vw,18px)] font-normal text-[#1a1a1a] mb-3 leading-[1.3] tracking-[-0.01em]">{s.title}</h3>
-                <p className="text-[13px] text-[#1a1a1a]/50 leading-[1.7] mb-8">{s.description}</p>
-                <Link to={s.link} className="inline-flex items-center gap-1.5 text-[12px] text-[#123524] hover:gap-3 transition-all tracking-[0.01em]">
-                  {t("services.learnMore")} <ArrowRight className="w-3 h-3" />
+                <h3 className="nc-card-h3 text-[#1a1a1a] mb-3">{s.title}</h3>
+                <p className="nc-small text-[#1a1a1a]/60 mb-6 leading-relaxed">{s.description}</p>
+                <Link to={s.link} className="inline-flex items-center gap-1.5 text-[13px] text-[#123524] tracking-[0.01em] hover:gap-3 transition-all min-h-[44px]">
+                  {t("services.learnMore")} <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </StaggerGroup>
         </div>
       </div>
     </section>
