@@ -23,9 +23,6 @@ export function HeroSection() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500&family=Cormorant+Garamond:wght@600&display=swap');
-        .font-hanken { font-family: 'Hanken Grotesk', sans-serif; }
-        .font-cormorant { font-family: 'Cormorant Garamond', serif; }
         .hero-nav-item { color: rgba(250,245,238,0.85); transition: color 0.15s; }
         .hero-nav-item:hover { color: #FAF5EE; }
       `}</style>
@@ -83,7 +80,7 @@ export function HeroSection() {
 
         {/* Headline — upper-middle */}
         <div className="flex-1 flex flex-col justify-center z-10 pt-[120px] pb-[140px]">
-          <h1 className={`text-[clamp(44px,6vw,116px)] leading-[1.04] tracking-[-0.02em] font-normal max-w-[900px] transition-all duration-700 ease-out ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          <h1 className={`text-[clamp(40px,5.5vw,64px)] leading-[1.1] tracking-[-0.03em] font-normal max-w-[900px] transition-all duration-700 ease-out ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}>
             {t("hero.title1")}<br />
             <span>{t("hero.titleHighlight")}</span>
@@ -91,7 +88,7 @@ export function HeroSection() {
         </div>
 
         {/* Vertical label */}
-        <div className="hidden lg:block absolute right-[56px] top-[38%] rotate-90 origin-right text-[11px] tracking-[0.05em] text-[#FAF5EE]/30 uppercase whitespace-nowrap z-10">
+        <div className="hidden lg:block absolute right-[56px] top-[38%] rotate-90 origin-right text-[11px] tracking-[0.08em] text-[#FAF5EE]/30 uppercase whitespace-nowrap z-10">
           Tumkur, Karnataka
         </div>
 
@@ -102,15 +99,15 @@ export function HeroSection() {
           <div className="flex gap-12 py-5 border-b border-white/[0.08]">
             {stats.map((s) => (
               <div key={s.label}>
-                <div className="text-[22px] font-semibold text-[#c59822] leading-none">{s.value}</div>
-                <div className="text-[11px] text-[#FAF5EE]/45 mt-1 tracking-wide">{s.label}</div>
+                <div className="text-[clamp(26px,2.5vw,32px)] font-normal text-[#c59822] leading-none tracking-[-0.02em]">{s.value}</div>
+                <div className="text-[11px] text-[#FAF5EE]/45 mt-1 tracking-[0.08em] uppercase">{s.label}</div>
               </div>
             ))}
           </div>
 
           {/* Tagline + scroll + buttons */}
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 py-6">
-            <p className="text-[15px] leading-[1.45] text-[#FAF5EE]/65 max-w-[500px] font-normal">
+            <p className="text-[15px] leading-[1.65] text-[#FAF5EE]/65 max-w-[500px] font-normal tracking-[0.005em]">
               {t("hero.description")}
             </p>
 
@@ -120,11 +117,11 @@ export function HeroSection() {
 
             <div className="flex flex-col sm:flex-row gap-[18px] w-full lg:w-auto">
               <Link to="/services"
-                className="w-full sm:w-[167px] h-[54px] flex items-center justify-center border border-[#FAF5EE]/30 text-[15px] font-medium text-[#FAF5EE] hover:bg-white/[0.07] transition-colors duration-200">
+                className="w-full sm:w-[167px] h-[54px] flex items-center justify-center border border-[#FAF5EE]/30 text-[15px] font-normal text-[#FAF5EE] hover:bg-white/[0.07] transition-colors duration-200 tracking-[0.01em] leading-[1.2]">
                 {t("hero.exploreServices")}
               </Link>
               <Link to="/contact"
-                className="w-full sm:w-[167px] h-[54px] flex items-center justify-center bg-[#c59822] text-[15px] font-medium text-[#123524] hover:brightness-110 transition-all duration-200">
+                className="w-full sm:w-[167px] h-[54px] flex items-center justify-center bg-[#c59822] text-[15px] font-normal text-[#123524] hover:brightness-110 transition-all duration-200 tracking-[0.01em] leading-[1.2]">
                 {t("nav.contact")}
               </Link>
             </div>

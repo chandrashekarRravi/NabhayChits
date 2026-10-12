@@ -14,8 +14,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        cormorant: ["Cormorant Garamond", "serif"],
-        sans: ["Hanken Grotesk", "sans-serif"],
+        sans: ["'Violet Sans'", "'Noto Sans Kannada'", "system-ui", "sans-serif"],
+        /* ponytail: cormorant key kept for backward compat with existing font-cormorant classes;
+           points to Violet Sans since we removed Cormorant Garamond */
+        cormorant: ["'Violet Sans'", "'Noto Sans Kannada'", "system-ui", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",

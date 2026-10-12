@@ -39,10 +39,10 @@ const Services = () => {
   ];
 
   const schemes = [
-    { amount: "₹1 Lakh", monthly: "₹5,000" },
-    { amount: "₹2 Lakh", monthly: "₹10,000" },
-    { amount: "₹3 Lakh", monthly: "₹15,000" },
-    { amount: "₹5 Lakh", monthly: "₹25,000" },
+    { amount: '₹1,00,000', monthly: '₹5,000' },
+    { amount: '₹2,00,000', monthly: '₹10,000' },
+    { amount: '₹3,00,000', monthly: '₹15,000' },
+    { amount: '₹5,00,000', monthly: '₹25,000' },
   ];
 
   return (
@@ -113,6 +113,7 @@ const Services = () => {
                     </tbody>
                   </table>
                   <p className="text-[11px] text-[#1a1a1a]/35 mt-6 max-w-xs leading-relaxed">{t("schemes.note")}</p>
+                  <p className="text-[11px] text-[#c59822] mt-3 max-w-xs leading-relaxed font-medium">{t("servicesPage.availabilityNote")}</p>
                 </div>
               </div>
             </div>
@@ -139,4 +140,5 @@ const Services = () => {
 };
 
 export default Services;
+
 

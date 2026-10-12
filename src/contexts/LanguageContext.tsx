@@ -70,9 +70,9 @@ const translations: Record<Language, Record<string, string>> = {
 
     "services.multipleOptions": "Multiple Chit Options",
     "services.multipleOptionsDesc": "Choose from different chit values and durations based on your financial requirements and eligibility.",
-    "services.multipleOptionsF1": "₹1 Lakh — ₹5,000/month",
-    "services.multipleOptionsF2": "₹2 Lakh — ₹10,000/month",
-    "services.multipleOptionsF3": "₹3 Lakh — ₹15,000/month",
+    "services.multipleOptionsF1": "₹1,00,000 — ₹5,000/month",
+    "services.multipleOptionsF2": "₹2,00,000 — ₹10,000/month",
+    "services.multipleOptionsF3": "₹3,00,000 — ₹15,000/month",
 
     "services.financialPlanning": "Financial Planning Support",
     "services.financialPlanningDesc": "Our team helps customers understand available chit schemes, contribution schedules, procedures and important terms before joining.",
@@ -164,10 +164,10 @@ const translations: Record<Language, Record<string, string>> = {
     "servicesPage.readyDesc": "Contact us to learn about available chit schemes and joining procedures.",
 
     // Scheme table labels
-    "schemes.amount1": "₹1 Lakh",
-    "schemes.amount2": "₹2 Lakh",
-    "schemes.amount3": "₹3 Lakh",
-    "schemes.amount4": "₹5 Lakh",
+    "schemes.amount1": "₹1,00,000",
+    "schemes.amount2": "₹2,00,000",
+    "schemes.amount3": "₹3,00,000",
+    "schemes.amount4": "₹5,00,000",
     "schemes.payment1": "₹5,000/month",
     "schemes.payment2": "₹10,000/month",
     "schemes.payment3": "₹15,000/month",
@@ -193,6 +193,16 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.messageSuccess": "We'll get back to you as soon as possible.",
     "contact.address": "Address",
     "contact.phone.label": "Phone",
+
+    // Legal pages
+    "nav.terms": "Terms & Conditions",
+    "nav.privacy": "Privacy Policy",
+    "footer.terms": "Terms & Conditions",
+    "footer.privacy": "Privacy Policy",
+    "footer.communications": "Grievance Redressal",
+
+    // Scheme availability note
+    "servicesPage.availabilityNote": "Contact us for current chit group availability.",
   },
   kn: {
     // Nav
@@ -253,9 +263,9 @@ const translations: Record<Language, Record<string, string>> = {
 
     "services.multipleOptions": "ಬಹು ಚಿಟ್ ಆಯ್ಕೆಗಳು",
     "services.multipleOptionsDesc": "ನಿಮ್ಮ ಹಣಕಾಸಿನ ಅಗತ್ಯಗಳು ಮತ್ತು ಅರ್ಹತೆಯ ಆಧಾರದ ಮೇಲೆ ವಿವಿಧ ಚಿಟ್ ಮೌಲ್ಯಗಳು ಮತ್ತು ಅವಧಿಗಳಿಂದ ಆಯ್ಕೆ ಮಾಡಿ.",
-    "services.multipleOptionsF1": "₹1 ಲಕ್ಷ — ₹5,000/ತಿಂಗಳು",
-    "services.multipleOptionsF2": "₹2 ಲಕ್ಷ — ₹10,000/ತಿಂಗಳು",
-    "services.multipleOptionsF3": "₹3 ಲಕ್ಷ — ₹15,000/ತಿಂಗಳು",
+    "services.multipleOptionsF1": "₹1,00,000 — ₹5,000/ತಿಂಗಳು",
+    "services.multipleOptionsF2": "₹2,00,000 — ₹10,000/ತಿಂಗಳು",
+    "services.multipleOptionsF3": "₹3,00,000 — ₹15,000/ತಿಂಗಳು",
 
     "services.financialPlanning": "ಹಣಕಾಸು ಯೋಜನೆ ಬೆಂಬಲ",
     "services.financialPlanningDesc": "ನಮ್ಮ ತಂಡವು ಗ್ರಾಹಕರಿಗೆ ಲಭ್ಯವಿರುವ ಚಿಟ್ ಯೋಜನೆಗಳು, ಕೊಡುಗೆ ವೇಳಾಪಟ್ಟಿಗಳು, ಕಾರ್ಯವಿಧಾನಗಳು ಮತ್ತು ಸೇರ್ಪಡೆ ಮೊದಲು ಮುಖ್ಯ ನಿಯಮಗಳನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.",
@@ -347,10 +357,10 @@ const translations: Record<Language, Record<string, string>> = {
     "servicesPage.readyDesc": "ಲಭ್ಯವಿರುವ ಚಿಟ್ ಯೋಜನೆಗಳು ಮತ್ತು ಸೇರ್ಪಡೆ ಕಾರ್ಯವಿಧಾನಗಳ ಬಗ್ಗೆ ತಿಳಿಯಲು ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ.",
 
     // Scheme table labels
-    "schemes.amount1": "₹1 ಲಕ್ಷ",
-    "schemes.amount2": "₹2 ಲಕ್ಷ",
-    "schemes.amount3": "₹3 ಲಕ್ಷ",
-    "schemes.amount4": "₹5 ಲಕ್ಷ",
+    "schemes.amount1": "₹1,00,000",
+    "schemes.amount2": "₹2,00,000",
+    "schemes.amount3": "₹3,00,000",
+    "schemes.amount4": "₹5,00,000",
     "schemes.payment1": "₹5,000/ತಿಂಗಳು",
     "schemes.payment2": "₹10,000/ತಿಂಗಳು",
     "schemes.payment3": "₹15,000/ತಿಂಗಳು",
@@ -376,6 +386,16 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.messageSuccess": "ನಾವು ಶೀಘ್ರದಲ್ಲೇ ನಿಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸುತ್ತೇವೆ.",
     "contact.address": "ವಿಳಾಸ",
     "contact.phone.label": "ಫೋನ್",
+
+    // Legal pages
+    "nav.terms": "ನಿಯಮಗಳು ಮತ್ತು ಷರತ್ತುಗಳು",
+    "nav.privacy": "ಗೌಪ್ಯತಾ ನೀತಿ",
+    "footer.terms": "ನಿಯಮಗಳು ಮತ್ತು ಷರತ್ತುಗಳು",
+    "footer.privacy": "ಗೌಪ್ಯತಾ ನೀತಿ",
+    "footer.communications": "ಕುಂದುಕೊರತೆ ನಿವಾರಣೆ",
+
+    // Scheme availability note
+    "servicesPage.availabilityNote": "ಪ್ರಸ್ತುತ ಚಿಟ್ ಗುಂಪಿನ ಲಭ್ಯತೆಗಾಗಿ ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ.",
   },
 };
 

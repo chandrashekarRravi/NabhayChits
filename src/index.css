@@ -1,12 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap');
+/* Kannada fallback — must be first @import per CSS spec */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@400;500;600&display=swap');
+
+/* Violet Sans — local font (Regular only) */
+@font-face {
+  font-family: 'Violet Sans';
+  src: url('/font/violet_sans-master/violet_sans-master/fonts/WOFF2/VioletSans-Regular.woff2') format('woff2'),
+       url('/font/violet_sans-master/violet_sans-master/fonts/WOFF/VioletSans-Regular.woff') format('woff'),
+       url('/font/violet_sans-master/violet_sans-master/fonts/TTF/VioletSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* ponytail: remove 1400px cap — all section containers now full-width like hero */
+.max-w-\[1400px\] { max-width: none; }
+
 /* 
   NABHAY CHITS
-  Design System
+  Design System — Violet Sans Typography
 */
 
 @layer base {
@@ -62,12 +77,18 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Hanken Grotesk', sans-serif;
+    /* Violet Sans for Latin/English; Noto Sans Kannada for Kannada glyphs */
+    font-family: 'Violet Sans', 'Noto Sans Kannada', system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    letter-spacing: 0.005em;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Hanken Grotesk', sans-serif;
-    @apply font-semibold tracking-tight;
+    font-family: 'Violet Sans', 'Noto Sans Kannada', system-ui, sans-serif;
+    font-weight: 400; /* Violet Sans only has Regular — weight achieved through size */
+    line-height: 1.2;
+    letter-spacing: -0.02em;
   }
 }
 

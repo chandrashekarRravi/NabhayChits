@@ -17,8 +17,8 @@ export function ServicesSection() {
       {/* Section label */}
       <div className="border-t border-[#1a1a1a]/10">
         <div className="max-w-[1400px] mx-auto px-[56px] md:px-[32px] sm:px-[20px] py-4 flex items-center justify-between">
-          <span className="text-[11px] tracking-[0.2em] uppercase text-[#1a1a1a]/35 font-medium">{t("services.badge")}</span>
-          <Link to="/services" className="text-[12px] text-[#123524] hover:underline flex items-center gap-1 transition-colors">
+          <span className="text-[11px] tracking-[0.08em] uppercase text-[#1a1a1a]/35 font-normal">{t("services.badge")}</span>
+          <Link to="/services" className="text-[12px] text-[#123524] hover:underline flex items-center gap-1 transition-colors tracking-[0.01em]">
             {t("services.viewAll")} <ArrowRight className="w-3 h-3" />
           </Link>
         </div>
@@ -27,8 +27,8 @@ export function ServicesSection() {
       {/* Headline */}
       <div className="border-t border-[#1a1a1a]/10">
         <div className="max-w-[1400px] mx-auto px-[56px] md:px-[32px] sm:px-[20px] py-16">
-          <h2 className="font-cormorant text-[clamp(32px,3vw,52px)] font-normal leading-[1.1] text-[#1a1a1a] max-w-xl">
-            {t("services.title1")} <span className="italic text-[#123524]">{t("services.titleHighlight")}</span>
+          <h2 className="font-cormorant text-[clamp(30px,3vw,42px)] font-normal leading-[1.2] tracking-[-0.03em] text-[#1a1a1a] max-w-xl">
+            {t("services.title1")} <span className="text-[#123524]">{t("services.titleHighlight")}</span>
           </h2>
         </div>
       </div>
@@ -42,9 +42,9 @@ export function ServicesSection() {
                 <div className="w-9 h-9 flex items-center justify-center border border-[#1a1a1a]/10 mb-8">
                   <s.icon className="w-4 h-4 text-[#123524]" />
                 </div>
-                <h3 className="text-[15px] font-semibold text-[#1a1a1a] mb-3 leading-snug">{s.title}</h3>
-                <p className="text-[13px] text-[#1a1a1a]/50 leading-relaxed mb-8">{s.description}</p>
-                <Link to={s.link} className="inline-flex items-center gap-1.5 text-[12px] text-[#123524] hover:gap-3 transition-all">
+                <h3 className="text-[clamp(16px,1.5vw,18px)] font-normal text-[#1a1a1a] mb-3 leading-[1.3] tracking-[-0.01em]">{s.title}</h3>
+                <p className="text-[13px] text-[#1a1a1a]/50 leading-[1.7] mb-8">{s.description}</p>
+                <Link to={s.link} className="inline-flex items-center gap-1.5 text-[12px] text-[#123524] hover:gap-3 transition-all tracking-[0.01em]">
                   {t("services.learnMore")} <ArrowRight className="w-3 h-3" />
                 </Link>
               </div>
