@@ -20,8 +20,8 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Hero
     "hero.badge": "Since 2015",
-    "hero.title1": "Our Chit...",
-    "hero.titleHighlight": "Your Future",
+    "hero.title1": "Where Trust Meets",
+    "hero.titleHighlight": "Finance Growth",
     "hero.title2": "",
     "hero.description": "A Tradition of Trust. A Future of Growth. Nabhay Chits provides structured, transparent, and professionally managed chit fund schemes across Karnataka since 2015.",
     "hero.exploreServices": "Explore Schemes",
@@ -133,8 +133,10 @@ const translations: Record<Language, Record<string, string>> = {
     "how.s5.desc": "Start contributing and participate in auctions according to the scheme rules.",
 
     // CTA
-    "cta.title1": "Trust. Transparency.",
+    "cta.title1": "Trust Today Progress",
     "cta.titleHighlight": "Tomorrow.",
+    // "cta.title1": "Trust. Transparency.",
+    // "cta.titleHighlight": "Tomorrow.",
     "cta.description": "Join over 500 customers who partner with Nabhay Chits. Enquire today about current chit group availability.",
     "cta.openAccount": "Join a Scheme",
     "cta.contactUs": "Contact Us",
