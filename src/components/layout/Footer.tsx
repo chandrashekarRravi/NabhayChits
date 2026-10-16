@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Instagram } from "lucide-react";
 import { FadeInReveal } from "@/components/common/MotionTransitions";
 import { motion } from "framer-motion";
 
@@ -70,6 +70,16 @@ export function Footer() {
                 <Link to="/contact" className="nc-small text-[#1a1a1a]/60 hover:text-[#123524] hover:underline transition-all min-h-[36px] flex items-center">
                   {t("footer.communications")}
                 </Link>
+                <a
+                  href="https://www.instagram.com/nabhay.chits?srtk=MWR3ZDQybXRkcmpnbg=="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="nc-small text-[#1a1a1a]/60 hover:text-[#123524] hover:underline transition-all min-h-[36px] flex items-center gap-1.5"
+                  aria-label="Nabhay Chits on Instagram"
+                >
+                  <Instagram className="w-3.5 h-3.5 text-[#123524]" />
+                  <span>Instagram</span>
+                </a>
               </div>
             </div>
           </FadeInReveal>
@@ -132,6 +142,19 @@ export function Footer() {
                     Maruthi Nagar,<br />
                     Tumkur – 572102
                   </address>
+                </div>
+                <div>
+                  <p className="nc-label text-[#1a1a1a]/50 mb-1.5">{t("contact.instagram")}</p>
+                  <a
+                    href="https://www.instagram.com/nabhay.chits?srtk=MWR3ZDQybXRkcmpnbg=="
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="nc-small text-[#1a1a1a] hover:text-[#123524] transition-colors inline-flex items-center gap-1.5 py-0.5 group"
+                    aria-label="Nabhay Chits on Instagram"
+                  >
+                    <Instagram className="w-3.5 h-3.5 text-[#123524] group-hover:scale-110 transition-transform" />
+                    <span className="hover:underline">@nabhay.chits</span>
+                  </a>
                 </div>
               </div>
             </div>

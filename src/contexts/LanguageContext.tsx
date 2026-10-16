@@ -193,8 +193,11 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.workingHours": "Working Hours",
     "contact.messageSent": "Message Sent!",
     "contact.messageSuccess": "We'll get back to you as soon as possible.",
+    "contact.messageFailedTitle": "Message Failed",
+    "contact.messageFailed": "Could not deliver your message. Please try again or call us at +91 9742130555.",
     "contact.address": "Address",
     "contact.phone.label": "Phone",
+    "contact.instagram": "Instagram",
 
     // Legal pages
     "nav.terms": "Terms & Conditions",
@@ -386,8 +389,11 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.workingHours": "ಕೆಲಸದ ಸಮಯ",
     "contact.messageSent": "ಸಂದೇಶ ಕಳುಹಿಸಲಾಗಿದೆ!",
     "contact.messageSuccess": "ನಾವು ಶೀಘ್ರದಲ್ಲೇ ನಿಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸುತ್ತೇವೆ.",
+    "contact.messageFailedTitle": "ಸಂದೇಶ ವಿಫಲವಾಗಿದೆ",
+    "contact.messageFailed": "ಸಂದೇಶ ಕಳುಹಿಸಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಪುನಃ ಪ್ರಯತ್ನಿಸಿ ಅಥವಾ +91 9742130555 ಗೆ ಕರೆ ಮಾಡಿ.",
     "contact.address": "ವಿಳಾಸ",
     "contact.phone.label": "ಫೋನ್",
+    "contact.instagram": "ಇನ್‌ಸ್ಟಾಗ್ರಾಮ್",
 
     // Legal pages
     "nav.terms": "ನಿಯಮಗಳು ಮತ್ತು ಷರತ್ತುಗಳು",
